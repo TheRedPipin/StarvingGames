@@ -8,3 +8,50 @@ body{
 	transform: translate(-50%,-50%);
 	-moz-transform: translate(-50%,-50%);
 }
+#districtsOuterLeft {
+	display: grid;
+	grid-template: "A B";
+	position: absolute;
+	top: 50%;
+	left: 80%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	gap: 50px;
+}
+#districtsOuterRight {
+	display: grid;
+	grid-template: "C D" ;
+	position: absolute;;
+	top: 50%;
+	left: 20%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	gap: 50px;
+}
+.disctrictBox {
+	border: 3px;
+	border-style: dashed;
+	height: 200px;
+	width: 200px;
+	justify-content: center;
+	text-align: center;
+}
+#mapOuter {
+	border: 3px;
+	border-style: solid;
+	display: grid;
+	grid-template: "A B C D";
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+.sectionBox {
+	border: 3px;
+	border-style: dashed;
+	height: 100px;
+	width: 100px;
+	justify-content: center;
+	text-align: center;
+}
