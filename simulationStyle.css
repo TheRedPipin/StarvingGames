@@ -1,0 +1,112 @@
+body{
+  padding: 25px;
+  user-select: none;
+}
+#titleText {
+	font-size: 50px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+#districtsOuterRight {
+	display: grid;
+	grid-template: "A B";
+	position: absolute;
+	top: 41.5%;
+	left: 80%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	row-gap: 75px;
+	column-gap:75px;
+}
+#districtsOuterLeft {
+	display: grid;
+	grid-template: "C D" ;
+	position: absolute;;
+	top: 41.5%;
+	left: 20%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	row-gap: 75px;
+	column-gap: 75px;
+}
+.griddy {
+	display: grid;
+	grid-template: "C D";
+	gap: 25px;
+}
+.disctrictText {
+	text-align: center;
+	font-size: 40px;
+	padding-bottom: 20px;
+}
+.disctrictBox {
+	border: 3px;
+	border-style: double;
+	height: 100px;
+	width: 100px;
+	justify-content: center;
+	text-align: center;
+}
+#mapOuter {
+	border: 3px;
+	border-style: solid;
+	display: grid;
+	grid-template: "A B C D";
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+.sectionBox {
+	border: 3px;
+	border-style: dashed;
+	height: 100px;
+	width: 100px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	font-size: 50px;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+#contextBoxOuter {
+	border: 10px;
+	border-style: solid;
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	height: 400px;
+	width: 500px;
+}
+
+.contextBoxText {
+	position: absolute;
+	left: 2%;
+	top: 20%;
+	font-size: 19px;
+}
+
+.namesText {
+	position: relative;
+	top: 110%;
+	font-size: 25px;
+	word-wrap: break-word;
+}
+
+#contextBoxDataOuter {
+	border: 10px;
+	border-style: solid;
+	padding: 10px;
+	display: grid;
+	grid-template: "A B C";
+	text-align: center;
+}
+
+.contextBoxDataText {
+	font-size: 20px;
+}

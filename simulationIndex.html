@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Starvation Game</title>
+  <link rel="stylesheet" href="simulationStyle.css">
+</head>
+<body>
+  <script src="simulationScript.js"></script>
+  <div id="titleText">!Starvation Game!</div>
+  <div id="districtsOuterLeft">
+
+    <div>
+      <div class="disctrictText">District 1</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText" id="nameOne">Ella Hastwell</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">Penis Cat</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 4</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">Ryan Eaten</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">Quaxly</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 2</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">Eden Engel</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">Monster Energy</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 5</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 3</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 6</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="districtsOuterRight">
+    <div>
+      <div class="disctrictText">District 7</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 10</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 8</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 11</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 9</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="disctrictText">District 12</div>
+      <div class="griddy">
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+        <div class="disctrictBox">
+          <div class="namesText">JOHN DOE</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="mapOuter">
+    <div class="sectionBox">A1</div>
+    <div class="sectionBox">A2</div>
+    <div class="sectionBox">A3</div>
+    <div class="sectionBox">A4</div>
+    <div class="sectionBox">B1</div>
+    <div class="sectionBox">B2</div>
+    <div class="sectionBox">B3</div>
+    <div class="sectionBox">B4</div>
+    <div class="sectionBox">C1</div>
+    <div class="sectionBox">C2</div>
+    <div class="sectionBox">C3</div>
+    <div class="sectionBox">C4</div>
+    <div class="sectionBox">D1</div>
+    <div class="sectionBox">D2</div>
+    <div class="sectionBox">D3</div>
+    <div class="sectionBox">D4</div>
+  </div>
+
+  <div id="contextBoxOuter">
+    <div id="contextBoxDataOuter">
+      <div class="contextBoxDataText">Day: 0</div>
+      <div class="contextBoxDataText">Time: 12:41 AM</div>
+      <div class="contextBoxDataText">Alive: 23</div>
+    </div>
+    <div class="contextBoxText">
+      12:33 AM: <span style="color: green; font-weight: bolder;">Ella</span> (Disctict 12) <span style="color: blue; font-weight: bolder;">Moves</span>: B2 -> B3
+      <br>
+      12:35 AM: <span style="color: green; font-weight: bolder;">Ella</span> (Disctict 12) <span style="color: blue; font-weight: bolder;">Meets</span> -> <span style="color: green; font-weight: bolder;">Daniel</span> (Disctict 11) -> B3
+      <br>
+      12:38 AM: <span style="color: green; font-weight: bolder;">Ella</span> (Disctict 12) <span style="color: red; font-weight: bolder;">Stabs</span> -> <span style="color: green; font-weight: bolder;">Daniel</span> (Disctict 11)
+      <br>
+      12:40 AM: <span style="color: brown; font-weight: bolder;">Daniel</span> (Disctict 11) <span style="color: red; font-weight: bolder;">Bleeds</span> out
+      <br>
+      12:41 AM: <span style="color: green; font-weight: bolder;">Ella</span> (District 12) <span style="color: gold; font-weight: bolder;">Loots</span> -> <span style="color: brown; font-weight: bolder;">Daniel</span> (Disctict 11)
+      <br>
+      <span style="color: green; font-weight: bolder;">Ella</span> <span style="color: goldenrod; font-weight: bolder;">+ AXE</span>
+      <br>
+      <span style="color: green; font-weight: bolder;">Ella</span> <span style="color: grey; font-weight: bolder;">+ WATER</span>
+    </div>
+    </div>
+</body>
+</html>
