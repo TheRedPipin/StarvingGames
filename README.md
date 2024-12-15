@@ -12,8 +12,28 @@ Class = named mother
       dictionary of stats (strength:5) etc. 
       inventory (also dictionary)
 
--add play/ause button for live display
--design map
+-add play/pause button for live display
+-design map (half complete)
 -create objects
 
-    
+Context Box:
+Contains overall Data such as;
+  Day
+  Time
+  People Alive
+Contains Events Such as;
+  Contestant Movement
+  Fights
+  Deaths
+  Enviomental Events (Flooding, Animals, Quicksand, Storms)
+  Profiting/Gaining of items etc.
+  Sponsorship
+Color coded key words:
+  Exploration Actions in Blue; Meets, Moves, Flees
+  Violent Actions in Red; Bleeds, Breaks, Stabs, Shoots, Punch, Kick, Ignite, Punctures, Sprain.
+  Map Reference in Turqouise
+  Proffiting Actions in Yellow; Loots, Finds, Gathers.
+  Alive in Green;
+  Dead in Brown;
+  Items; Weapons in Gold, Consumables in Grey.
+  
