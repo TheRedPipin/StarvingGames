@@ -1,13 +1,15 @@
 //class
 let contestentList = [];
+let stats = {};
+let background = 0
+
 class mother {
-    constructor({name,age,gender,district}) { 
+    constructor({name,age,gender,district,stats}) { 
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.district = district;
-        this.st
-    
+        this.stats = stats
     }
 }
 
@@ -19,7 +21,12 @@ function end(){
         contestentName = prompt("Enter contestent" +count);
         count +=1;
         contestentList.push(contestentName);
-        
+        //strength is a key
+        stats["strength"] = 0;
+        stats["speed"] = 0;
+        stats["intelligence"] = 0;
+        stats["charisma"] = 0;
+        console.log(stats);
     }
 }
 
@@ -32,7 +39,7 @@ end()
 /*
     //objects
     //district 1
-    const contestent1 = new mother({name:contestentList[0], age:"30", gender:"M", district:1});
+    const contestent1 = new mother({name:contestentList[0], age:"30", gender:"M", district:1, stats:4});
     const contestent2 = new mother({name:contestentList[1], age:"45", gender:"F", district:1});
     //district 2
     const contestent3 = new mother({name:contestentList[2], age:"12", gender:"M", district:2});

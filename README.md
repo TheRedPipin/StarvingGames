@@ -36,4 +36,5 @@ Color coded key words:
   Alive in Green;
   Dead in Brown;
   Items; Weapons in Gold, Consumables in Grey.
-  
+Backgrounds:
+  Scholorly - Strength min 2
