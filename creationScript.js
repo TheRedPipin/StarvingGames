@@ -1,33 +1,34 @@
 //class
+let contestentList = [];
 class mother {
     constructor({name,age,gender,district}) { 
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.district = district;
+        this.st
     
     }
 }
-/*
-function start(){
+
+function end(){
     //ask for contestent names
     let count = 0;
-    let contestentList = [];
+    let contestentName = ""
     while (count < 24) {
-        let contestentName = prompt("Enter contestent" +count);
+        contestentName = prompt("Enter contestent" +count);
         count +=1;
         contestentList.push(contestentName);
-        console.log(contestentList);
+        
     }
-    switchARoo()
 }
-*/
 
+//switch page
 function switchARoo(){
-    localStorage.setItem("names", document.getElementById("theInput").value)
+    localStorage.setItem("names" , JSON.stringify(contestentList))
     window.location.href = "./simulationIndex.html";
 }
-
+end()
 /*
     //objects
     //district 1
