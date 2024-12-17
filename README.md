@@ -37,4 +37,8 @@ Color coded key words:
   Dead in Brown;
   Items; Weapons in Gold, Consumables in Grey.
 Backgrounds:
-  Scholorly - Strength min 2
+  Scholorly - Strength: 2; Intelligence: 8; Consitution: N/A; Charisma: 5; Speed: 3;
+  Worker - Strength: 8; Intelligence: 2; Consitution: 5; Charisma: N/A; Speed: N/A;
+  Theif - Strenghth: 2; Intelligence: 5; Consitution: N/A; Charisma: 5; Speed: 8;
+Stat Logic:
+  statValue = Base stat + randomRange(0 to (10-Basestat))
