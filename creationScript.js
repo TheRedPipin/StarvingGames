@@ -1,3 +1,4 @@
+
 //class
 let contestentList = [];
 let stats = {};
@@ -18,7 +19,8 @@ function end(){
     let count = 0;
     let contestentName = ""
     while (count < 24) {
-        contestentName = prompt("Enter contestent" +count);
+        //contestentName = prompt("Enter contestent" +count);
+        contestentName = count.toString()
         count +=1;
         contestentList.push(contestentName);
         //strength is a key
