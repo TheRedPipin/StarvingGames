@@ -10,7 +10,7 @@
 <script src="creationScript.js"></script>
 <button onclick="switchARoo()">Switch Page</button>
     <div id="districtDropdown">
-        <button id="dropButton">Dropdown</button>
+        <button id="dropButton">District 1</button>
         <div class="districtDropdownContent">
             <button onclick="districtChoice(0)">District 1</button>
             <button onclick="districtChoice(1)">District 2</button>
@@ -26,19 +26,21 @@
             <button onclick="districtChoice(11)">District 12</button>
         </div>
     </div>
-    <div id="nameCapsule">
+    <div class="nameCapsule">
         <div id="tempNameTextMale">Name (male): </div>
-        <input type="text" id="tempNameInputMale">
-
-        <div id="tempNameTextFemale">Name (female): </div>
-        <input type="text" id="tempNameInputFemale">
+        <input type="text" id="tempNameInputMale" maxlength="15">
     </div>
-    <div id="ageCapsule">
+    <div class="ageCapsule">
         <div id="tempAgeTextMale">Age (male): </div>
-        <input type="text" id="tempAgeInputMale">
-
+        <input type="number" id="tempAgeInputMale" max="120">
+    </div>
+    <div class="nameCapsule">
+        <div id="tempNameTextFemale">Name (female): </div>
+        <input type="text" id="tempNameInputFemale" maxlength="15">
+    </div>
+    <div class="ageCapsule">
         <div id="tempAgeTextFemale">Age (female): </div>
-        <input type="text" id="tempAgeInputFemale">
+        <input type="number" id="tempAgeInputFemale" max="120">
     </div>
 </body>
 </html>

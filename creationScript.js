@@ -1,21 +1,11 @@
-
 //class
-let contestentList = [];
-let stats = {};
 let background = 0;
-let tempNames = [];
-let tempAge = [];
 let lastValue = 0;
-
-for(let i = 0; i < 12; i++){
-    tempNames.push(["",""]);
-    tempAge.push(["", ""]);
-    
-}
+let contestents = []
 
 class mother {
-    constructor({name,age,gender,district,stats}) { 
-        this.name = name;
+    constructor({contestentName,age,gender,district,stats}) { 
+        this.contestentName = contestentName;
         this.age = age;
         this.gender = gender;
         this.district = district;
@@ -23,35 +13,48 @@ class mother {
     }
 }
 
+for(let i = 0; i < 12; i++){
+    contestents.push(
+        [new mother({contestentName:"", age:0, gender:"M", district:i, stats:{}}), new mother({contestentName:"", age:0, gender:"F", district:i, stats:{}})]
+        );
+}
+
 
 function end(){
-    //ask for contestent names
-    let count = 0;
-    while (count < 12) {
-        contestentList.push(tempNames[count][0]);
-        contestentList.push(tempNames[count][1]);
-        //strength is a key
-        stats["strength"] = 0;
-        stats["speed"] = 0;
-        stats["intelligence"] = 0;
-        stats["charisma"] = 0;
-        console.log(stats);
-        count +=1;
-    }
+    //male
+    contestents[lastValue][0].contestentName = document.getElementById("tempNameInputMale").value;
+    contestents[lastValue][0].age = document.getElementById("tempAgeInputMale").value;
+    //female
+    contestents[lastValue][1].contestentName = document.getElementById("tempNameInputFemale").value;
+    contestents[lastValue][1].age = document.getElementById("tempAgeInputFemale").value;
+    return
 }
+
 //calls in html creationIndex with alll the indexes (trust)
 function districtChoice(districtNumber){
-    //temp name
-    tempNames[lastValue][0] = document.getElementById("tempNameInputMale").value;
-    document.getElementById("tempNameInputMale").value = tempNames[districtNumber][0];
+    //drop down name change
+    document.getElementById("dropButton").innerHTML = "District " + (districtNumber+1);
+    
+    //male
+    contestents[lastValue][0].contestentName = document.getElementById("tempNameInputMale").value;
+    document.getElementById("tempNameInputMale").value = contestents[districtNumber][0].contestentName;
+    contestents[lastValue][0].age = document.getElementById("tempAgeInputMale").value;
+    document.getElementById("tempAgeInputMale").value = contestents[districtNumber][0].age;
+    //stats
+    /*
+    contestents[lastValue][0].stats = document.getElementById("statsMale").value;
+    document.getElementById("statsMale").value = contestents[districtNumber][0].stats;
+    */
 
-    tempNames[lastValue][1] = document.getElementById("tempNameInputFemale").value;
-    document.getElementById("tempNameInputFemale").value = tempNames[districtNumber][1];
-    //temp age
-    tempAge[lastValue][0] = document.getElementById("tempAgeInputMale").value;
-    document.getElementById("tempAgeInputMale").value = tempAge[districtNumber][0];
-    tempAge[lastValue][1] = document.getElementById("tempAgeInputFemale").value;
-    document.getElementById("tempAgeInputFemale").value = tempAge[districtNumber][1];
+    //female
+    contestents[lastValue][1].contestentName = document.getElementById("tempNameInputFemale").value;
+    document.getElementById("tempNameInputFemale").value = contestents[districtNumber][1].contestentName;
+    contestents[lastValue][1].age = document.getElementById("tempAgeInputFemale").value;
+    document.getElementById("tempAgeInputFemale").value = contestents[districtNumber][1].age;
+    /*stats
+    contestents[lastValue][1].stats = document.getElementById("statsFemale").value;
+    document.getElementById("statsFemale").value = contestents[districtNumber][1].stats;
+    */
     //reset 
     lastValue = districtNumber;
 }
@@ -61,6 +64,10 @@ function districtChoice(districtNumber){
 //switch page
 function switchARoo(){
     end()
-    localStorage.setItem("names" , JSON.stringify(contestentList))
+    localStorage.setItem("contestentData" , JSON.stringify(contestents))
     window.location.href = "./simulationIndex.html";
 }
+
+setInterval(function update(){
+    //pass
+},10)

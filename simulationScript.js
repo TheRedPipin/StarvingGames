@@ -1,9 +1,9 @@
 window.onload = function(){
-    let names = JSON.parse(localStorage.getItem("names"));
-    console.log(names);
-    for (let i = 0; i < 24; i++){
-        console.log(i);
-        console.log(names[i]);
-        document.getElementById("name" + i).innerHTML = names[i];
+    let contestents = JSON.parse(localStorage.getItem("contestentData"));
+    console.log(contestents);
+    for (let i = 0; i < 12; i++){
+        console.log(contestents[i]);
+        document.getElementById("name" + i).innerHTML = contestents[i][0].contestentName;
+        document.getElementById("name" + (i+1)).innerHTML = contestents[i][1].contestentName;
     }
 }

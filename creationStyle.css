@@ -33,18 +33,14 @@
 #districtDropdown:hover .dropButton {
     background-color: rgb(104, 104, 104);
 }
-#nameCapsule{
-    display: grid;
-    grid-template: "A B";
-    justify-content: left;
+.nameCapsule{
+    
 }
 #tempNameText {
     font-size: 25px
 }
-#ageCapsule{
-    display: grid;
-    grid-template: "A B";
-    justify-content: left;
+.ageCapsule{
+    
 }
 #tempAgeText{
     font-size: 25px
