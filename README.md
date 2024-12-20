@@ -41,7 +41,7 @@ Backgrounds:
   Worker - Strength: 8; Intelligence: 2; Consitution: 5; Charisma: N/A; Speed: N/A;
   Theif - Strenghth: 2; Intelligence: 5; Consitution: N/A; Charisma: 5; Speed: 8;
 Stat Logic:
-  statValue = Base stat + randomRange(0 to (10-Basestat))
+  statValue = (Base stat + randomRange(0 to Base stat)) > 10 = 10
 
 
 for old times sake
