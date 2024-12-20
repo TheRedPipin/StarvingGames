@@ -10,7 +10,7 @@
 <script src="creationScript.js"></script>
 <button onclick="switchARoo()">Switch Page</button>
     <div id="districtDropdown">
-        <button id="dropButton">Dropdown</button>
+        <button id="dropButton">District 1</button>
         <div class="districtDropdownContent">
             <button onclick="districtChoice(0)">District 1</button>
             <button onclick="districtChoice(1)">District 2</button>
@@ -26,19 +26,41 @@
             <button onclick="districtChoice(11)">District 12</button>
         </div>
     </div>
-    <div id="nameCapsule">
-        <div id="tempNameTextMale">Name (male): </div>
-        <input type="text" id="tempNameInputMale">
-
-        <div id="tempNameTextFemale">Name (female): </div>
-        <input type="text" id="tempNameInputFemale">
-    </div>
-    <div id="ageCapsule">
-        <div id="tempAgeTextMale">Age (male): </div>
-        <input type="text" id="tempAgeInputMale">
-
-        <div id="tempAgeTextFemale">Age (female): </div>
-        <input type="text" id="tempAgeInputFemale">
+    <div id="otherShit">
+        <div id="maleStuff">
+            <div class="nameCapsule">
+                <div>--MALE--</div>
+                <div id="tempNameTextMale">Name: </div>
+                <input type="text" id="tempNameInputMale" maxlength="15">
+            </div>
+            <div class="ageCapsule">
+                <div id="tempAgeTextMale">Age: </div>
+                <input type="number" id="tempAgeInputMale" placeholder="0">
+            </div>
+            <div id="backgroundCapsule">
+                <div>Backgrounds</div>
+                <button onclick="backgroundClick(0, 0)" class="backgroundButton" id="bkg00">Scholar</button>
+                <button onclick="backgroundClick(1, 0)" class="backgroundButton" id="bkg10">Miner</button>
+                <button onclick="backgroundClick(2, 0)" class="backgroundButton" id="bkg20">Thief</button>
+            </div>
+        </div>
+        <div id="femaleStuff">
+            <div>--FEMALE--</div>
+            <div class="nameCapsule">
+                <div id="tempNameTextFemale">Name: </div>
+                <input type="text" id="tempNameInputFemale" maxlength="15">
+            </div>
+            <div class="ageCapsule">
+                <div id="tempAgeTextFemale">Age: </div>
+                <input type="number" id="tempAgeInputFemale" placeholder="0">
+            </div>
+            <div id="backgroundCapsule">
+                <div>Backgrounds</div>
+                <button onclick="backgroundClick(0, 1)" class="backgroundButton" id="bkg01">Scholar</button>
+                <button onclick="backgroundClick(1, 1)" class="backgroundButton" id="bkg11">Miner</button>
+                <button onclick="backgroundClick(2, 1)" class="backgroundButton" id="bkg21">Thief</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
