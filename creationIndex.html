@@ -7,23 +7,19 @@
     <link rel="stylesheet" href="creationStyle.css">
 </head>
 <body>
-<script src="creationScript.js"></script>
+<script src="creationScript.js" defer></script>
 <button onclick="switchARoo()">Switch Page</button>
     <div id="districtDropdown">
         <button id="dropButton">District 1</button>
         <div class="districtDropdownContent">
-            <button onclick="districtChoice(0)">District 1</button>
-            <button onclick="districtChoice(1)">District 2</button>
-            <button onclick="districtChoice(2)">District 3</button>
-            <button onclick="districtChoice(3)">District 4</button>
-            <button onclick="districtChoice(4)">District 5</button>
-            <button onclick="districtChoice(5)">District 6</button>
-            <button onclick="districtChoice(6)">District 7</button>
-            <button onclick="districtChoice(7)">District 8</button>
-            <button onclick="districtChoice(8)">District 9</button>
-            <button onclick="districtChoice(9)">District 10</button>
-            <button onclick="districtChoice(10)">District 11</button>
-            <button onclick="districtChoice(11)">District 12</button>
+            <script>
+                for (let i = 0; i < 12; i++) {
+                  let button = document.createElement('button');
+                  button.textContent = `District ${i + 1}`;
+                  button.onclick = () => districtChoice(i);
+                  document.querySelector('.districtDropdownContent').appendChild(button);
+                }
+              </script>
         </div>
     </div>
     <div id="otherShit">

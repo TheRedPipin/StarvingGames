@@ -1,6 +1,5 @@
 body{
   padding: 25px;
-  user-select: none;
 }
 #titleText {
 	font-size: 50px;
@@ -115,4 +114,14 @@ body{
 
 .contextBoxDataText {
 	font-size: 20px;
+}
+
+.infoBoxOuter{
+	display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 100;
+	color: blue;
 }

@@ -40,7 +40,6 @@ function backgroundClick(backgroundSelect, gender){
     statBlock["charisma"] = 10;
    }
    contestents[lastValue][gender].stats = statBlock;
-   console.log(contestents[lastValue][gender]);
 };
 
 
@@ -89,21 +88,11 @@ function districtChoice(districtNumber){
     contestents[lastValue][0].age = document.getElementById("tempAgeInputMale").value;
     document.getElementById("tempAgeInputMale").value = contestents[districtNumber][0].age;
 
-    //stats
-    /*
-    contestents[lastValue][0].stats = document.getElementById("statsMale").value;
-    document.getElementById("statsMale").value = contestents[districtNumber][0].stats;
-    */
-
     //female
     contestents[lastValue][1].contestentName = document.getElementById("tempNameInputFemale").value;
     document.getElementById("tempNameInputFemale").value = contestents[districtNumber][1].contestentName;
     contestents[lastValue][1].age = document.getElementById("tempAgeInputFemale").value;
     document.getElementById("tempAgeInputFemale").value = contestents[districtNumber][1].age;
-    /*stats
-    contestents[lastValue][1].stats = document.getElementById("statsFemale").value;
-    document.getElementById("statsFemale").value = contestents[districtNumber][1].stats;
-    */
     //reset 
     lastValue = districtNumber;
 }
