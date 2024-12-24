@@ -8,199 +8,24 @@
   <link rel="stylesheet" href="simulationStyle.css">
 </head>
 <body>
-  <script>let nameIdentifyier = localStorage.getItem("names");</script>
-  <script src="simulationScript.js"></script>
+  <script src="simulationScript.js" defer></script>
   <div id="titleText">!Starvation Game!</div>
-  <div id="districtsOuterLeft">
-
-    <div>
-      <div class="disctrictText">District 1</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name0">Greg</div>
-          <div class="ageText" id="age0"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name1"></div>
-          <div class="ageText" id="age1"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 4</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name6">Eden</div>
-          <div class="ageText" id="age6"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name7"></div>
-          <div class="ageText" id="age7"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 2</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name2"></div>
-          <div class="ageText" id="age2"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name3"></div>
-          <div class="ageText" id="age3"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 5</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name8"></div>
-          <div class="ageText" id="age8"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name9"></div>
-          <div class="ageText" id="age9"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 3</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name4"></div>
-          <div class="ageText" id="age4"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name5"></div>
-          <div class="ageText" id="age5"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 6</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name10"></div>
-          <div class="ageText" id="age10"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name11"></div>
-          <div class="ageText" id="age11"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="districtsOuterRight">
-    <div>
-      <div class="disctrictText">District 7</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name12"></div>
-          <div class="ageText" id="age12"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name13"></div>
-          <div class="ageText" id="age13"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 10</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name18"></div>
-          <div class="ageText" id="age18"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name19"></div>
-          <div class="ageText" id="age19"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 8</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name14"></div>
-          <div class="ageText" id="age14"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name15"></div>
-          <div class="ageText" id="age15"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 11</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name20"></div>
-          <div class="ageText" id="age20"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name21"></div>
-          <div class="ageText" id="age21"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 9</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name16"></div>
-          <div class="ageText" id="age16"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name17"></div>
-          <div class="ageText" id="age17"></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="disctrictText">District 12</div>
-      <div class="griddy">
-        <div class="disctrictBox">
-          <div class="namesText" id="name22"></div>
-          <div class="ageText" id="age22"></div>
-        </div>
-        <div class="disctrictBox">
-          <div class="namesText" id="name23"></div>
-          <div class="ageText" id="age23"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <div id="districtsOuterLeft"></div>
+  <div id="districtsOuterRight"></div>
   <div id="mapOuter">
-    <div class="sectionBox">A1</div>
-    <div class="sectionBox">A2</div>
-    <div class="sectionBox">A3</div>
-    <div class="sectionBox">A4</div>
-    <div class="sectionBox">B1</div>
-    <div class="sectionBox">B2</div>
-    <div class="sectionBox">B3</div>
-    <div class="sectionBox">B4</div>
-    <div class="sectionBox">C1</div>
-    <div class="sectionBox">C2</div>
-    <div class="sectionBox">C3</div>
-    <div class="sectionBox">C4</div>
-    <div class="sectionBox">D1</div>
-    <div class="sectionBox">D2</div>
-    <div class="sectionBox">D3</div>
-    <div class="sectionBox">D4</div>
+    <script>
+      let sections = ['A', 'B', 'C', 'D'];
+      let numbers = [1, 2, 3, 4];
+  
+      sections.forEach(row => {
+        numbers.forEach(num => {
+          let div = document.createElement('div');
+          div.classList.add('sectionBox');
+          div.textContent = `${row}${num}`;
+          document.getElementById('mapOuter').appendChild(div);
+        });
+      });
+    </script>
   </div>
 
   <div id="contextBoxOuter">
@@ -224,6 +49,18 @@
       <br>
       <span style="color: green; font-weight: bolder;">Ella</span> <span style="color: grey; font-weight: bolder;">+ WATER</span>
     </div>
-    </div>
+  </div>
+
+  <div class="infoBoxOuter">
+    Strength: 0
+    <br>
+    Intelligence: 0
+    <br>
+    Speed: 0
+    <br>
+    Constitution: 0
+    <br>
+    Charisma: 0
+  </div>
 </body>
 </html>

@@ -16,31 +16,16 @@ background["charisma"] = 0;
 
 //backgroundSelect holds the button click. gender is the second index
 function backgroundClick(backgroundSelect, gender){
-   contestents[lastValue][gender].background = backgroundSelect;
-   statBlock = {"strength":0, "intelligence":0, "speed":0, "constitution": 0, "charisma":0};
+    contestents[lastValue][gender].background = backgroundSelect;
 
-   statBlock["strength"] = background[backgroundSelect]["strength"]  + Math.floor(Math.random() * background[backgroundSelect]["strength"]);
-   if (statBlock["strength"] > 10){
-    statBlock["strength"] = 10;
-   }
-   statBlock["intelligence"] = background[backgroundSelect]["intelligence"]  + Math.floor(Math.random() * background[backgroundSelect]["intelligence"]);
-   if (statBlock["intelligence"] > 10){
-    statBlock["intelligence"] = 10
-   }
-   statBlock["speed"] = background[backgroundSelect]["speed"]  + Math.floor(Math.random() * background[backgroundSelect]["speed"]);
-   if (statBlock["speed"] > 10){
-    statBlock["speed"] = 10
-   }
-   statBlock["constitution"] = background[backgroundSelect]["constitution"]  + Math.floor(Math.random() * background[backgroundSelect]["constitution"]);
-   if (statBlock["constitution"] > 10){
-    statBlock["constitution"] = 10
-   }
-   statBlock["charisma"] = background[backgroundSelect]["charisma"] + Math.floor(Math.random() * background[backgroundSelect]["charisma"]);
-   if (statBlock["charisma"] > 10){
-    statBlock["charisma"] = 10;
-   }
-   contestents[lastValue][gender].stats = statBlock;
-   console.log(contestents[lastValue][gender]);
+    const statBlock = ["strength", "intelligence", "speed", "constitution", "charisma"].reduce((stats, stat) => {
+        let statValue = background[backgroundSelect][stat] + Math.floor(Math.random() * background[backgroundSelect][stat]);
+        stats[stat] = statValue > 10 ? 10 : statValue;
+        return stats;
+    }, {});
+    
+    contestents[lastValue][gender].stats = statBlock;
+    console.log(statBlock)
 };
 
 
@@ -89,21 +74,11 @@ function districtChoice(districtNumber){
     contestents[lastValue][0].age = document.getElementById("tempAgeInputMale").value;
     document.getElementById("tempAgeInputMale").value = contestents[districtNumber][0].age;
 
-    //stats
-    /*
-    contestents[lastValue][0].stats = document.getElementById("statsMale").value;
-    document.getElementById("statsMale").value = contestents[districtNumber][0].stats;
-    */
-
     //female
     contestents[lastValue][1].contestentName = document.getElementById("tempNameInputFemale").value;
     document.getElementById("tempNameInputFemale").value = contestents[districtNumber][1].contestentName;
     contestents[lastValue][1].age = document.getElementById("tempAgeInputFemale").value;
     document.getElementById("tempAgeInputFemale").value = contestents[districtNumber][1].age;
-    /*stats
-    contestents[lastValue][1].stats = document.getElementById("statsFemale").value;
-    document.getElementById("statsFemale").value = contestents[districtNumber][1].stats;
-    */
     //reset 
     lastValue = districtNumber;
 }
