@@ -16,7 +16,7 @@ body{
 	left: 80%;
 	transform: translate(-50%,-50%);
 	-moz-transform: translate(-50%,-50%);
-	row-gap: 75px;
+	row-gap: 100px;
 	column-gap:75px;
 }
 #districtsOuterLeft {
@@ -27,7 +27,7 @@ body{
 	left: 20%;
 	transform: translate(-50%,-50%);
 	-moz-transform: translate(-50%,-50%);
-	row-gap: 75px;
+	row-gap: 100px;
 	column-gap: 75px;
 }
 .griddy {
@@ -124,4 +124,86 @@ body{
     padding: 10px;
     z-index: 100;
 	color: blue;
+}
+
+@media (max-width: 768px) {
+    #titleText {
+        font-size: 40px;
+    }
+
+    #districtsOuterRight, #districtsOuterLeft {
+        grid-template: "A" "B";
+        row-gap: 50px;
+        column-gap: 50px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #mapOuter {
+        grid-template: "A B" "C D";
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .sectionBox {
+        height: 80px;
+        width: 80px;
+        font-size: 40px;
+    }
+
+    #contextBoxOuter {
+        height: 300px;
+        width: 400px;
+    }
+
+    .contextBoxText {
+        font-size: 16px;
+    }
+
+    .namesText, .ageText {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #titleText {
+        font-size: 30px;
+    }
+
+    #districtsOuterRight, #districtsOuterLeft {
+        grid-template: "A" "B";
+        row-gap: 30px;
+        column-gap: 30px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #mapOuter {
+        grid-template: "A" "B" "C" "D";
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .sectionBox {
+        height: 60px;
+        width: 60px;
+        font-size: 30px;
+    }
+
+    #contextBoxOuter {
+        height: 200px;
+        width: 300px;
+    }
+
+    .contextBoxText {
+        font-size: 14px;
+    }
+
+    .namesText, .ageText {
+        font-size: 16px;
+    }
 }

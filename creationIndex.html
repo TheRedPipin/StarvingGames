@@ -16,6 +16,7 @@
                 for (let i = 0; i < 12; i++) {
                   let button = document.createElement('button');
                   button.textContent = `District ${i + 1}`;
+                  button.id = `district${i}`;
                   button.onclick = () => districtChoice(i);
                   document.querySelector('.districtDropdownContent').appendChild(button);
                 }
@@ -25,7 +26,7 @@
     <div id="otherShit">
         <div id="maleStuff">
             <div class="nameCapsule">
-                <div>--MALE--</div>
+                <div id="maleStatus">--MALE--</div>
                 <div id="tempNameTextMale">Name: </div>
                 <input type="text" id="tempNameInputMale" maxlength="15">
             </div>
@@ -41,7 +42,7 @@
             </div>
         </div>
         <div id="femaleStuff">
-            <div>--FEMALE--</div>
+            <div id="femaleStatus">--FEMALE--</div>
             <div class="nameCapsule">
                 <div id="tempNameTextFemale">Name: </div>
                 <input type="text" id="tempNameInputFemale" maxlength="15">
@@ -55,6 +56,7 @@
                 <button onclick="backgroundClick(0, 1)" class="backgroundButton" id="bkg01">Scholar</button>
                 <button onclick="backgroundClick(1, 1)" class="backgroundButton" id="bkg11">Miner</button>
                 <button onclick="backgroundClick(2, 1)" class="backgroundButton" id="bkg21">Thief</button>
+
             </div>
         </div>
     </div>

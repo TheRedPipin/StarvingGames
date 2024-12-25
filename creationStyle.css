@@ -11,6 +11,7 @@ body {
     width: 155px;
     padding: 10px 0px;
 }
+
 #districtDropdown {
     display: inline-block;
     position: absolute;
@@ -19,6 +20,7 @@ body {
     transform: translate(-50%,-50%);
     -moz-transform: translate(-50%,-50%);
 }
+
 .districtDropdownContent {
     display: grid;
     position: absolute;
@@ -26,24 +28,27 @@ body {
     min-width: 155px;
     z-index: 1;
 }
+
 .districtDropdownContent a {
     color: black;
     padding: 12px 16px;
     display: block;
 }
+
 #districtDropdown:hover .districtDropdownContent {
     display: grid;
 }
+
 #districtDropdown:hover .dropButton {
     background-color: rgb(104, 104, 104);
 }
 
 #tempNameText {
-    font-size: 25px
+    font-size: 25px;
 }
 
-#tempAgeText{
-    font-size: 25px
+#tempAgeText {
+    font-size: 25px;
 }
 
 #maleStuff {
@@ -69,3 +74,40 @@ body {
     box-shadow: 0px;
 }
 
+@media (max-width: 768px) {
+    #districtDropdown {
+        left: 50%;
+        top: 10%;
+    }
+
+    #maleStuff, #femaleStuff {
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #femaleStuff {
+        top: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    #dropButton {
+        font-size: 14px;
+        width: 130px;
+    }
+
+    #tempNameText, #tempAgeText {
+        font-size: 20px;
+    }
+
+    #maleStuff, #femaleStuff {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #femaleStuff {
+        top: 70%;
+    }
+}
