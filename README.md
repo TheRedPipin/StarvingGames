@@ -84,3 +84,4 @@ It also contains events such as:
 1. Clone the repository.
 2. Open `creationIndex.html` in your browser to create contestants.
 3. After creating contestants, click the "Switch Page" button to go to the simulation.
+4. Now watch ur beautifull Tributes murder each other!
