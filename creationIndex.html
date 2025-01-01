@@ -25,6 +25,7 @@
     </div>
     <div id="otherShit">
         <div id="maleStuff">
+            <button onclick="randomise(0)">RANDOM</button>
             <div class="nameCapsule">
                 <div id="maleStatus">--MALE--</div>
                 <div id="tempNameTextMale">Name: </div>
@@ -36,12 +37,18 @@
             </div>
             <div id="backgroundCapsule">
                 <div>Backgrounds</div>
-                <button onclick="backgroundClick(0, 0)" class="backgroundButton" id="bkg00">Scholar</button>
-                <button onclick="backgroundClick(1, 0)" class="backgroundButton" id="bkg10">Miner</button>
-                <button onclick="backgroundClick(2, 0)" class="backgroundButton" id="bkg20">Thief</button>
+                <div class="backgroundBtns">
+                    <button onclick="backgroundClick(0, 0)" class="backgroundButton" id="bkg00">Scholar</button>
+                    <button onclick="backgroundClick(1, 0)" class="backgroundButton" id="bkg10">Miner</button>
+                    <button onclick="backgroundClick(2, 0)" class="backgroundButton" id="bkg20">Thief</button>
+                    <button onclick="backgroundClick(3, 0)" class="backgroundButton" id="bkg30">Average Joe</button>
+                    <button onclick="backgroundClick(4, 0)" class="backgroundButton" id="bkg40">Warrior</button>
+                    <button onclick="backgroundClick(5, 0)" class="backgroundButton" id="bkg50">Diplomat</button>
+                </div>
             </div>
         </div>
         <div id="femaleStuff">
+            <button onclick="randomise(1)">RANDOM</button>
             <div id="femaleStatus">--FEMALE--</div>
             <div class="nameCapsule">
                 <div id="tempNameTextFemale">Name: </div>
@@ -53,10 +60,14 @@
             </div>
             <div id="backgroundCapsule">
                 <div>Backgrounds</div>
-                <button onclick="backgroundClick(0, 1)" class="backgroundButton" id="bkg01">Scholar</button>
-                <button onclick="backgroundClick(1, 1)" class="backgroundButton" id="bkg11">Miner</button>
-                <button onclick="backgroundClick(2, 1)" class="backgroundButton" id="bkg21">Thief</button>
-
+                <div class="backgroundBtns">
+                    <button onclick="backgroundClick(0, 1)" class="backgroundButton" id="bkg01">Scholar</button>
+                    <button onclick="backgroundClick(1, 1)" class="backgroundButton" id="bkg11">Miner</button>
+                    <button onclick="backgroundClick(2, 1)" class="backgroundButton" id="bkg21">Thief</button>
+                    <button onclick="backgroundClick(3, 1)" class="backgroundButton" id="bkg31">Average Joe</button>
+                    <button onclick="backgroundClick(4, 1)" class="backgroundButton" id="bkg41">Warrior</button>
+                    <button onclick="backgroundClick(5, 1)" class="backgroundButton" id="bkg51">Diplomat</button>
+                </div>
             </div>
         </div>
     </div>

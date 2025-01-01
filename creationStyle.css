@@ -55,7 +55,7 @@ body {
     display: grid;
     grid-template: "A" "B";
     position: absolute;
-    top: 20%;
+    top: 22%;
     left: 50%;
     transform: translate(-50%,-50%);
     -moz-transform: translate(-50%,-50%);
@@ -66,7 +66,7 @@ body {
     display: grid;
     grid-template: "A" "B";
     position: absolute;
-    top: 40%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%,-50%);
     -moz-transform: translate(-50%,-50%);
@@ -74,40 +74,15 @@ body {
     box-shadow: 0px;
 }
 
-@media (max-width: 768px) {
-    #districtDropdown {
-        left: 50%;
-        top: 10%;
-    }
-
-    #maleStuff, #femaleStuff {
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    #femaleStuff {
-        top: 60%;
-    }
+.backgroundCapsule{
+    justify-content: center;
+    text-align: center;
 }
 
-@media (max-width: 480px) {
-    #dropButton {
-        font-size: 14px;
-        width: 130px;
-    }
-
-    #tempNameText, #tempAgeText {
-        font-size: 20px;
-    }
-
-    #maleStuff, #femaleStuff {
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    #femaleStuff {
-        top: 70%;
-    }
+.backgroundBtns{
+    display: grid;
+    grid-template: "A B C" "D E F";
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
