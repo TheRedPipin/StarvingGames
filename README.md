@@ -2,13 +2,18 @@
 
 Starving Games is a Hunger Games simulator that allows for custom player creation and simulation of events. The game includes a map, contestants with various backgrounds and stats, and random events that affect the outcome of the game.
 
-## Features
+## Base Features
 
 - Custom player creation
-- Dynamic map design
 - Random events (person-caused and environment-caused)
 - Context box displaying overall data and events
 - Color-coded keywords for different actions and statuses
+
+## Future Additions
+
+- Custom and Dynamic Map Deisgn
+- User Controlled Sponsorship
+- Maybe a cat or 2
 
 ## Map
 
@@ -29,10 +34,12 @@ The map is a 4 by 4 grid with 2D array indexing (e.g., a1, a2, a3, a4, b1, etc.)
   - Inventory (also a dictionary)
 
 ## To-Do List
-
-- Add play/pause button for live display
-- Design map (half complete)
-- Create objects
+- Design landing page
+- Start creating simulation logic
+- A Stop and Start Button
+- Contestant Pictures
+- Red dots on map for contestants
+- Map details
 
 ## Context Box
 
@@ -77,4 +84,3 @@ It also contains events such as:
 1. Clone the repository.
 2. Open `creationIndex.html` in your browser to create contestants.
 3. After creating contestants, click the "Switch Page" button to go to the simulation.
-4. Open `simulationIndex.html` in your browser to start the simulation.
