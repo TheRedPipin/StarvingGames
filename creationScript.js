@@ -49,7 +49,7 @@ window.onload = function(){
             if (item){
                 document.getElementById(`district${index}`).style.color = "black";
                 document.getElementById(`district${index}`).style.fontWeight = "bolder";
-                document.getElementById(`district${index}`).style.backgroundColor = "#4CAF50"
+                document.getElementById(`district${index}`).style.backgroundColor = "Chartreuse"
             }
             else{
                 document.getElementById(`district${index}`).style.color = "";
@@ -57,13 +57,6 @@ window.onload = function(){
                 document.getElementById(`district${index}`).style.fontWeight = "";
             }
         });
-
-        // Update dropdown box appearance based on current district completion status
-        if (completeDistricts[lastValue]) {
-            document.getElementById("dropButton").classList.add("complete");
-        } else {
-            document.getElementById("dropButton").classList.remove("complete");
-        }
     },10);
 };
 
@@ -112,21 +105,20 @@ function backgroundClick(backgroundSelect, gender){
 
 //Class Innit
 class mother {
-    constructor({contestantName,age,gender,district,background,stats, status}) { 
+    constructor({contestantName,age,gender,district,background,stats}) { 
         this.contestantName = contestantName;
         this.age = age;
         this.gender = gender;
         this.district = district;
         this.background = background;
         this.stats = stats;
-        this.status = status;
     }
 }
 
 //create an array of 12 districts, each with a male and female contestant
 for(let i = 0; i < 12; i++){
     contestants.push(
-        [new mother({contestantName:"", age:0, gender:"M", district:i, background:null, stats:{}, status:1}), new mother({contestantName:"", age:0, gender:"F", district:i, background:null, stats:{},status:1})]
+        [new mother({contestantName:"", age:0, gender:"M", district:i, background:null, stats:{}}), new mother({contestantName:"", age:0, gender:"F", district:i, background:null, stats:{}})]
     );
 }
 
@@ -145,11 +137,6 @@ function end(){
 
 //handles district selection and updates the inputs to match selected district
 function districtChoice(districtNumber){
-    document.querySelectorAll('.districtDropdownContent button').forEach(button => {
-        button.style.border = "";
-    });
-    document.getElementById(`district${districtNumber}`).style.border = "2px solid #FF4500"
-    document.getElementById(`district${districtNumber}`).style.borderRadius = "2px"
     //drop down name change
     document.getElementById("dropButton").innerHTML = "District " + (districtNumber+1);
 
@@ -185,27 +172,20 @@ function districtChoice(districtNumber){
 }
 
 function randomise(tempGender){
-    let iterations = 10;
-    let interval = 80;
-
-    let intervalId = setInterval(() => {
-        let tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
-        let tempAge = Math.floor(Math.random() * (20 - 12) + 12);
-
-        if (tempGender == 0){
-            document.getElementById("tempNameInputMale").value = tempName;
-            document.getElementById("tempAgeInputMale").value = tempAge;
-        } else {
-            document.getElementById("tempNameInputFemale").value = tempName;
-            document.getElementById("tempAgeInputFemale").value = tempAge;
-        }
-
-        iterations--;
-        if (iterations <= 0) {
-            clearInterval(intervalId);
-            backgroundClick(Math.floor(Math.random() * background.length), tempGender);
-        }
-    }, interval);
+    let tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
+    let tempAge = Math.floor(Math.random() * (20 - 12) + 12);
+    for (let i = 0; i < background.length; i++) {
+        document.getElementById(`bkg${i}${tempGender}`).style.backgroundColor = "";
+    }
+    if (tempGender == 0){
+        document.getElementById("tempNameInputMale").value = tempName;
+        document.getElementById("tempAgeInputMale").value = tempAge;
+    }
+    else{
+        document.getElementById("tempNameInputFemale").value = tempName;
+        document.getElementById("tempAgeInputFemale").value = tempAge;
+    }
+    backgroundClick(Math.floor(Math.random() * background.length), tempGender)
 }
 
 //switch page
@@ -216,7 +196,6 @@ function switchARoo(){
             console.log(district[g])
             if ((district[g].contestantName == "") || (district[g].age == 0) || (district[g].background == null)){
                 district[g].contestantName = "N/A"
-                district[g].status = 0
                 district[g].age = 0
                 district[g].background = null
                 district[g].stats = {}
@@ -225,14 +204,4 @@ function switchARoo(){
     });
     localStorage.setItem("contestantData" , JSON.stringify(contestants)); //save data to local storage
     window.location.href = "./simulationIndex.html";  //save data to local storage
-}
-
-function previousDistrict() {
-    let newDistrict = (lastValue - 1 + 12) % 12;
-    districtChoice(newDistrict);
-}
-
-function nextDistrict() {
-    let newDistrict = (lastValue + 1) % 12;
-    districtChoice(newDistrict);
 }

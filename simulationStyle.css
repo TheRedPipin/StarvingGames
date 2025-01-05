@@ -1,183 +1,130 @@
-body {
-	padding: 25px;
-	overflow: hidden;
-	user-select: none;
-	animation: fadeIn 1s ease-in-out;
-	font-family: 'Arial', sans-serif;
-	background: #ffecd2;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-#titleText {
-  font-size: 50px;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  animation: slideDown 1s ease-in-out;
-  color: #333;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes slideDown {
-  from { transform: translate(-50%, -100%); }
-  to { transform: translate(-50%, -50%); }
-}
-
-#districtsOuterRight, #districtsOuterLeft {
-  display: grid;
-  grid-template: "A B";
-  position: absolute;
-  top: 41.5%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  row-gap: 100px;
-  column-gap: 75px;
-}
-
-#districtsOuterRight {
-  left: 80%;
-}
-
-#districtsOuterLeft {
-  left: 20%;
-}
-
-.griddy {
-  display: grid;
-  grid-template: "C D";
-  gap: 25px;
-}
-
-.disctrictText {
-  text-align: center;
-  font-size: 40px;
-  padding-bottom: 20px;
-  color: #444;
-}
-
-.disctrictBox {
-  border: 3px double #444;
-  height: 100px;
-  width: 100px;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  background-color: #fff;
-  border-radius: 5px;
-}
-
-.disctrictBox:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#mapOuter {
-  border: 3px solid #444;
-  display: grid;
-  grid-template: "A B C D E";
+body{
+  padding: 25px;
   overflow: hidden;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  background-color: #fff;
-  border-radius: 10px;
+  user-select: none;
 }
-
+#titleText {
+	font-size: 50px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
+#districtsOuterRight {
+	display: grid;
+	grid-template: "A B";
+	position: absolute;
+	top: 41.5%;
+	left: 80%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	row-gap: 100px;
+	column-gap:75px;
+}
+#districtsOuterLeft {
+	display: grid;
+	grid-template: "C D" ;
+	position: absolute;;
+	top: 41.5%;
+	left: 20%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	row-gap: 100px;
+	column-gap: 75px;
+}
+.griddy {
+	display: grid;
+	grid-template: "C D";
+	gap: 25px;
+}
+.disctrictText {
+	text-align: center;
+	font-size: 40px;
+	padding-bottom: 20px;
+}
+.disctrictBox {
+	border: 3px;
+	border-style: double;
+	height: 100px;
+	width: 100px;
+	justify-content: center;
+	text-align: center;
+}
+#mapOuter {
+	border: 3px;
+	border-style: solid;
+	display: grid;
+	grid-template: "A B C D E";
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+}
 .sectionBox {
-  border: 3px dashed #444;
-  height: 75px;
-  width: 75px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
-  font-family: 'Courier New', Courier, monospace;
-  transition: transform 0.3s, box-shadow 0.3s;
-  background-color: #f9f9f9;
-}
-
-.sectionBox:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border: 3px;
+	border-style: dashed;
+	height: 75px;
+	width: 75px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	font-size: 50px;
+	font-family: 'Courier New', Courier, monospace;
 }
 
 #contextBoxOuter {
-  border: 10px solid #444;
-  position: absolute;
-  top: 76%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  height: 400px;
-  width: 500px;
-  user-select: text;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border: 10px;
+	border-style: solid;
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	height: 400px;
+	width: 500px;
+	user-select: text;
 }
 
 .contextBoxText {
-  position: absolute;
-  left: 2%;
-  top: 20%;
-  font-size: 19px;
-  color: #333;
-}
-
-.namesText, .ageText {
-  position: relative;
-  font-size: 25px;
-  word-wrap: break-word;
-  color: #555;
+	position: absolute;
+	left: 2%;
+	top: 20%;
+	font-size: 19px;
 }
 
 .namesText {
-  top: 110%;
+	position: relative;
+	top: 110%;
+	font-size: 25px;
+	word-wrap: break-word;
 }
-
 .ageText {
-  top: 115%;
+	position: relative;
+	top: 115%;
+	font-size: 25px;
+	word-wrap: break-word;
 }
 
 #contextBoxDataOuter {
-  border: 10px solid #444;
-  padding: 10px;
-  display: grid;
-  grid-template: "A B C";
-  text-align: center;
-  background-color: #f9f9f9;
-  border-radius: 10px;
+	border: 10px;
+	border-style: solid;
+	padding: 10px;
+	display: grid;
+	grid-template: "A B C";
+	text-align: center;
 }
 
 .contextBoxDataText {
-  font-size: 20px;
-  color: #333;
+	font-size: 20px;
 }
 
-.infoBoxOuter {
-  display: none;
-  position: absolute;
-  background-color: white;
-  border: 1px solid black;
-  padding: 10px;
-  z-index: 100;
-  color: blue;
-  transition: opacity 0.3s;
-  opacity: 0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.infoBoxOuter.show {
-	display: block;
-	opacity: 1;
+.infoBoxOuter{
+	display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 100;
+	color: blue;
 }
