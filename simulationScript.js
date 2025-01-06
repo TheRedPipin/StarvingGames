@@ -1,3 +1,5 @@
+let minutes = 0;
+let hours = 0;
 window.onload = function() {
     //[boxIndex, district, gender]
     const districts = [
@@ -124,4 +126,18 @@ window.onload = function() {
             infoBoxOuter.classList.remove("show");
         });
     });
+
+    let dayNightCycle = document.getElementById("contextBoxDataText");
+    let startingDate = new Date('2021-01-01T00:00:00');
+    //speed up time
+    setInterval(function updateStartingDate(){
+
+        minutes += 1;
+        if (minutes == 60) {
+            minutes = 0;
+            hours += 1;
+        }
+        document.getElementById("timeText").innerText = `Time: ${hours.toString()}:${minutes < 10 ? minutes.toString() : "0" + minutes.toString()}`;
+    }, 1000);
+
 };

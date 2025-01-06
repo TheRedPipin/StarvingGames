@@ -11,70 +11,74 @@
     <script src="creationScript.js" defer></script>
     <button id="switchBtn" onclick="switchARoo()">Switch Page</button>
     <div class="container">
-        <button class="arrowButton" onclick="previousDistrict()">&#9664;</button>
-        <div id="districtDropdown">
-            <button id="dropButton">District 1</button>
-            <div class="districtDropdownContent">
-                <script>
-                    for (let i = 0; i < 12; i++) {
-                      let button = document.createElement('button');
-                      button.textContent = `District ${i + 1}`;
-                      button.id = `district${i}`;
-                      button.onclick = () => districtChoice(i);
-                      document.querySelector('.districtDropdownContent').appendChild(button);
-                    }
-                  </script>
-            </div>
-        </div>
-        <button class="arrowButton" onclick="nextDistrict()">&#9654;</button>
         <div id="otherShit">
-            <div id="maleStuff">
-                <button class="randomButton" onclick="randomise(0)">RANDOM</button>
-                <div class="inputDetails">
-                    <div class="nameCapsule">
-                        <div style="padding-bottom: 5%;" id="maleStatus">--MALE--</div>
-                        <div id="tempNameTextMale">Name: </div>
-                        <input type="text" id="tempNameInputMale" maxlength="15">
-                    </div>
-                    <div class="ageCapsule">
-                        <div id="tempAgeTextMale">Age: </div>
-                        <input type="number" id="tempAgeInputMale" placeholder="0">
-                    </div>
-                </div>
-                <div id="backgroundCapsule">
-                    <div style="padding-bottom: 3%;">Backgrounds</div>
-                    <div class="backgroundBtns">
-                        <button onclick="backgroundClick(0, 0)" class="backgroundButton" id="bkg00">Scholar</button>
-                        <button onclick="backgroundClick(1, 0)" class="backgroundButton" id="bkg10">Miner</button>
-                        <button onclick="backgroundClick(2, 0)" class="backgroundButton" id="bkg20">Thief</button>
-                        <button onclick="backgroundClick(3, 0)" class="backgroundButton" id="bkg30">Average Joe</button>
-                        <button onclick="backgroundClick(4, 0)" class="backgroundButton" id="bkg40">Warrior</button>
-                        <button onclick="backgroundClick(5, 0)" class="backgroundButton" id="bkg50">Diplomat</button>
+            <div id="districtChoiceContent">
+                <button class="arrowButton" onclick="previousDistrict()">&#9664;</button>
+                <div id="districtDropdown">
+                    <button id="dropButton">District 1</button>
+                    <div class="districtDropdownContent">
+                        <script>
+                            for (let i = 0; i < 12; i++) {
+                                let button = document.createElement('button');
+                                button.textContent = `District ${i + 1}`;
+                                button.id = `district${i}`;
+                                button.onclick = () => districtChoice(i);
+                                document.querySelector('.districtDropdownContent').appendChild(button);
+                            }
+                        </script>
                     </div>
                 </div>
+                <button class="arrowButton" onclick="nextDistrict()">&#9654;</button>
             </div>
-            <div id="femaleStuff">
-                <button class="randomButton" onclick="randomise(1)">RANDOM</button>
-                <div class="inputDetails">
-                    <div class="nameCapsule">
-                        <div style="padding-bottom: 5%;" id="femaleStatus">--FEMALE--</div>
-                        <div id="tempNameTextFemale">Name: </div>
-                        <input type="text" id="tempNameInputFemale" maxlength="15">
+            <div class="characterContainer">
+                <div id="maleStuff">
+                    <button class="randomButton" onclick="randomise(0)">RANDOM</button>
+                    <div class="inputDetails">
+                        <div class="nameCapsule">
+                            <div style="padding-bottom: 5%;" id="maleStatus">--MALE--</div>
+                            <div id="tempNameTextMale">Name: </div>
+                            <input type="text" id="tempNameInputMale" maxlength="15">
+                        </div>
+                        <div class="ageCapsule">
+                            <div id="tempAgeTextMale">Age: </div>
+                            <input type="number" id="tempAgeInputMale" placeholder="0">
+                        </div>
                     </div>
-                    <div class="ageCapsule">
-                        <div id="tempAgeTextFemale">Age: </div>
-                        <input type="number" id="tempAgeInputFemale" placeholder="0">
+                    <div id="backgroundCapsule">
+                        <div style="padding-bottom: 3%;">Backgrounds</div>
+                        <div class="backgroundBtns">
+                            <button onclick="backgroundClick(0, 0)" class="backgroundButton" id="bkg00">Scholar</button>
+                            <button onclick="backgroundClick(1, 0)" class="backgroundButton" id="bkg10">Miner</button>
+                            <button onclick="backgroundClick(2, 0)" class="backgroundButton" id="bkg20">Thief</button>
+                            <button onclick="backgroundClick(3, 0)" class="backgroundButton" id="bkg30">Average Joe</button>
+                            <button onclick="backgroundClick(4, 0)" class="backgroundButton" id="bkg40">Warrior</button>
+                            <button onclick="backgroundClick(5, 0)" class="backgroundButton" id="bkg50">Diplomat</button>
+                        </div>
                     </div>
                 </div>
-                <div id="backgroundCapsule">
-                    <div style="padding-bottom: 3%;">Backgrounds</div>
-                    <div class="backgroundBtns">
-                        <button onclick="backgroundClick(0, 1)" class="backgroundButton" id="bkg01">Scholar</button>
-                        <button onclick="backgroundClick(1, 1)" class="backgroundButton" id="bkg11">Miner</button>
-                        <button onclick="backgroundClick(2, 1)" class="backgroundButton" id="bkg21">Thief</button>
-                        <button onclick="backgroundClick(3, 1)" class="backgroundButton" id="bkg31">Average Joe</button>
-                        <button onclick="backgroundClick(4, 1)" class="backgroundButton" id="bkg41">Warrior</button>
-                        <button onclick="backgroundClick(5, 1)" class="backgroundButton" id="bkg51">Diplomat</button>
+                <div id="femaleStuff">
+                    <button class="randomButton" onclick="randomise(1)">RANDOM</button>
+                    <div class="inputDetails">
+                        <div class="nameCapsule">
+                            <div style="padding-bottom: 5%;" id="femaleStatus">--FEMALE--</div>
+                            <div id="tempNameTextFemale">Name: </div>
+                            <input type="text" id="tempNameInputFemale" maxlength="15">
+                        </div>
+                        <div class="ageCapsule">
+                            <div id="tempAgeTextFemale">Age: </div>
+                            <input type="number" id="tempAgeInputFemale" placeholder="0">
+                        </div>
+                    </div>
+                    <div id="backgroundCapsule">
+                        <div style="padding-bottom: 3%;">Backgrounds</div>
+                        <div class="backgroundBtns">
+                            <button onclick="backgroundClick(0, 1)" class="backgroundButton" id="bkg01">Scholar</button>
+                            <button onclick="backgroundClick(1, 1)" class="backgroundButton" id="bkg11">Miner</button>
+                            <button onclick="backgroundClick(2, 1)" class="backgroundButton" id="bkg21">Thief</button>
+                            <button onclick="backgroundClick(3, 1)" class="backgroundButton" id="bkg31">Average Joe</button>
+                            <button onclick="backgroundClick(4, 1)" class="backgroundButton" id="bkg41">Warrior</button>
+                            <button onclick="backgroundClick(5, 1)" class="backgroundButton" id="bkg51">Diplomat</button>
+                        </div>
                     </div>
                 </div>
             </div>

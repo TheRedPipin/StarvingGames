@@ -3,7 +3,17 @@ const randomFirstNames = [
     "Skyler", "Ella", "Dakota", "Harper", "Rowan", "Sawyer", "Emerson", "Finley", "Hayden", "Parker",
     "Blake", "Cameron", "Drew", "Elliot", "Jesse", "Kai", "Logan", "Micah", "Nico", "Phoenix",
     "River", "Sage", "Tatum", "Wren", "Arden", "Briar", "Charlie", "Dylan", "Eden", "Frankie",
-    "Gray", "Hollis", "Indigo", "Jules", "Kendall", "Lennon", "Ryan", "Noel", "Oakley", "Reagan"
+    "Gray", "Hollis", "Indigo", "Jules", "Kendall", "Lennon", "Ryan", "Noel", "Oakley", "Reagan",
+    "Addison", "Bailey", "Blair", "Brooke", "Carter", "Chandler", "Dallas", "Devon", "Easton", "Emery",
+    "Everett", "Flynn", "Grayson", "Harley", "Hunter", "Jaden", "Kelsey", "Lane", "Linden", "Mackenzie",
+    "Marley", "Mason", "Monroe", "Nolan", "Peyton", "Reese", "Remy", "Rory", "Rowan", "Shiloh",
+    "Spencer", "Sydney", "Tanner", "Teagan", "Tristan", "Tyler", "Val", "West", "Winter", "Zion",
+    "Aiden", "Brady", "Chase", "Damon", "Eli", "Finn", "Gage", "Hank", "Ian", "Jace",
+    "Kane", "Liam", "Milo", "Nash", "Owen", "Pierce", "Quincy", "Reid", "Shane", "Troy",
+    "Uriah", "Vance", "Wade", "Xander", "Yale", "Zane", "Avery", "Blake", "Cody", "Drew",
+    "Evan", "Flynn", "Grant", "Hayes", "Jude", "Knox", "Levi", "Max", "Nico", "Oscar",
+    "Parker", "Quinn", "Ryder", "Seth", "Theo", "Vaughn", "Wyatt", "Xavier", "Zeke", "Asher",
+    "Beau", "Cade", "Dane", "Elias", "Finn", "Graham", "Hugo", "Jasper", "Kian", "Luca"
 ];
 
 const randomLastNames = [
@@ -11,7 +21,17 @@ const randomLastNames = [
     "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin",
     "Lee", "Brown", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson",
     "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores",
-    "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts"
+    "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts",
+    "Phillips", "Evans", "Turner", "Parker", "Collins", "Edwards", "Stewart", "Morris", "Morales", "Murphy",
+    "Cook", "Rogers", "Morgan", "Peterson", "Cooper", "Reed", "Bailey", "Bell", "Gomez", "Kelly",
+    "Howard", "Ward", "Cox", "Diaz", "Richardson", "Wood", "Watson", "Brooks", "Bennett", "Gray",
+    "James", "Reyes", "Cruz", "Hughes", "Price", "Myers", "Long", "Foster", "Sanders", "Ross",
+    "Moreno", "Powell", "Sullivan", "Russell", "Ortiz", "Jenkins", "Gutierrez", "Perry", "Butler", "Barnes",
+    "Fisher", "Henderson", "Coleman", "Simmons", "Patterson", "Jordan", "Reynolds", "Hamilton", "Graham", "Kim",
+    "Gonzales", "Alexander", "Ramos", "Wallace", "Griffin", "West", "Cole", "Hayes", "Chavez", "Gibson",
+    "Bryant", "Ellis", "Stevens", "Murray", "Ford", "Marshall", "Owens", "Mcdonald", "Harrison", "Ruiz",
+    "Kennedy", "Wells", "Alvarez", "Woods", "Mendoza", "Castillo", "Olson", "Webb", "Washington", "Tucker",
+    "Freeman", "Burns", "Henry", "Vasquez", "Snyder", "Simpson", "Crawford", "Jimenez", "Porter", "Mason"
 ];
 
 window.onload = function(){
@@ -19,6 +39,7 @@ window.onload = function(){
     document.getElementById("tempAgeInputFemale").value = 0;
 
     setInterval(function update(){
+        //checks that the names are filled with data, determines the colour of background e.g. red for na
         let checks = [false, false];
         if (document.getElementById("tempAgeInputMale").value && document.getElementById("tempAgeInputMale").value != 0 && document.getElementById("tempNameInputMale").value && contestants[lastValue][0].background !== null){
             document.getElementById("maleStatus").style.color = "green";
@@ -58,7 +79,6 @@ window.onload = function(){
             }
         });
 
-        // Update dropdown box appearance based on current district completion status
         if (completeDistricts[lastValue]) {
             document.getElementById("dropButton").classList.add("complete");
         } else {
@@ -67,14 +87,29 @@ window.onload = function(){
     },10);
 };
 
+document.addEventListener('DOMContentLoaded', () => {
+    const districtChoiceContent = document.getElementById('districtChoiceContent');
+    const characterContainer = document.querySelector('.characterContainer');
+
+    districtChoiceContent.addEventListener('mouseover', () => {
+        characterContainer.style.transition = 'opacity 0.2s ease-in';
+        characterContainer.style.opacity = '0.5';
+    });
+
+    districtChoiceContent.addEventListener('mouseout', () => {
+        characterContainer.style.transition = 'opacity 0.2s ease-out';
+        characterContainer.style.opacity = '1';
+    });
+});
+
 //defines the background stats
 let background = [
-    {"strength":2, "intelligence":9, "speed":3, "constitution": 4, "charisma":6}, // Scholar
-    {"strength":8, "intelligence":2, "speed":4, "constitution": 7, "charisma":3}, // Miner
-    {"strength":3, "intelligence":5, "speed":9, "constitution": 4, "charisma":2}, // Thief
-    {"strength":4, "intelligence":4, "speed":4, "constitution": 4, "charisma":4}, // Average Joe
-    {"strength":9, "intelligence":3, "speed":2, "constitution": 8, "charisma":4}, // Warrior
-    {"strength":3, "intelligence":5, "speed":6, "constitution": 4, "charisma":8}  // Diplomat
+    {"strength":2, "intelligence":9, "speed":3, "constitution":4, "charisma":6}, // Scholar
+    {"strength":8, "intelligence":2, "speed":4, "constitution":7, "charisma":3}, // Miner
+    {"strength":3, "intelligence":5, "speed":9, "constitution":4, "charisma":2}, // Thief
+    {"strength":4, "intelligence":4, "speed":4, "constitution":4, "charisma":4}, // Average Joe
+    {"strength":9, "intelligence":3, "speed":2, "constitution":8, "charisma":4}, // Warrior
+    {"strength":3, "intelligence":5, "speed":6, "constitution":4, "charisma":8}  // Diplomat
 ];
 let lastValue = 0; //tracks the last selected district
 let contestants = []; //array to store all contestants
@@ -112,7 +147,7 @@ function backgroundClick(backgroundSelect, gender){
 
 //Class Innit
 class mother {
-    constructor({contestantName,age,gender,district,background,stats, status}) { 
+    constructor({contestantName,age,gender,district,background,stats,status}) { 
         this.contestantName = contestantName;
         this.age = age;
         this.gender = gender;
