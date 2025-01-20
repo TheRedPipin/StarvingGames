@@ -34,7 +34,6 @@ The map is a 4 by 4 grid with 2D array indexing (e.g., a1, a2, a3, a4, b1, etc.)
   - Inventory (also a dictionary)
 
 ## To-Do List
-- Design landing page
 - Start creating simulation logic
 - A Stop and Start Button
 - Contestant Pictures
@@ -55,6 +54,12 @@ It also contains events such as:
 - Environmental Events (Flooding, Animals, Quicksand, Storms)
 - Profiting/Gaining of items, etc.
 - Sponsorship
+
+Actions have ID's:
+- 0 == Move
+- 1 == Eat
+- 2 == Fight
+- 3 == Sleep
 
 ### Color-Coded Keywords
 
