@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Starvation Game</title>
+  <link rel="stylesheet" href="simulationStyle.css">
+</head>
+<body>
+  <script src="simulationScript.js" defer></script>
+  <div id="titleText">!Craving Contest!</div>
+  <div id="districtsOuterLeft"></div>
+  <div id="districtsOuterRight"></div>
+  <div id="mapOuter">
+    <script>
+      let sections = ['A', 'B', 'C', 'D', 'E'];
+      let numbers = [1, 2, 3, 4, 5];
+  
+      sections.forEach(row => {
+        numbers.forEach(num => {
+          let div = document.createElement('div');
+          div.classList.add('sectionBox');
+          div.textContent = `${row}${num}`;
+          document.getElementById('mapOuter').appendChild(div);
+        });
+      });
+    </script>
+  </div>
+
+  <div id="contextBoxOuter">
+    <div id="contextBoxDataOuter">
+      <div id="dayText" class="contextBoxDataText">Day: ???</div>
+      <div id="timeText" class="contextBoxDataText">Time: ???</div>
+      <div id="aliveText" class="contextBoxDataText">Alive: ???</div>
+    </div>
+    <div id="contextBoxText">
+    </div>
+  </div>
+
+  <div class="infoBoxOuter">
+    Strength: 0
+    <br>
+    Intelligence: 0
+    <br>
+    Speed: 0
+    <br>
+    Constitution: 0
+    <br>
+    Charisma: 0
+  </div>
+</body>
+</html>
