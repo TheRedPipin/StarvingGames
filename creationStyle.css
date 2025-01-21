@@ -58,9 +58,9 @@ body {
     transition: background-color 0.3s, transform 0.3s;
 }
 
-#dropButton:hover {
+#districtDropdown:hover #dropButton {
     background-color: rgb(104, 104, 104);
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 #districtDropdown {
@@ -196,4 +196,8 @@ body {
 .characterContainer {
     margin-top: 50px;
     z-index: 0;
+}
+
+.districtDropButton {
+    box-sizing: border-box;
 }
