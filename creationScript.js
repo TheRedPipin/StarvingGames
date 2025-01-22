@@ -1,3 +1,4 @@
+let lock = false;
 const randomFirstNames = [
     "Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley", "Jamie", "Avery", "Peyton", "Quinn",
     "Skyler", "Ella", "Dakota", "Harper", "Rowan", "Sawyer", "Emerson", "Finley", "Hayden", "Parker",
@@ -88,7 +89,7 @@ window.onload = function(){
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const districtChoiceContent = document.getElementById('districtChoiceContent');
+    const districtChoiceContent = document.getElementById('districtDropdown');
     const characterContainer = document.querySelector('.characterContainer');
 
     districtChoiceContent.addEventListener('mouseover', () => {
@@ -185,7 +186,7 @@ function districtChoice(districtNumber){
     document.querySelectorAll('.districtDropdownContent button').forEach(button => {
         button.style.border = "";
     });
-    document.getElementById(`district${districtNumber}`).style.border = "2px solid #FF4500"
+    document.getElementById(`district${districtNumber}`).style.border = "2px dashed #FF4500"
     document.getElementById(`district${districtNumber}`).style.borderRadius = "2px"
     //drop down name change
     document.getElementById("dropButton").innerHTML = "District " + (districtNumber+1);
@@ -222,9 +223,9 @@ function districtChoice(districtNumber){
 }
 
 function randomise(tempGender){
+    lock = true;
     let iterations = 10;
     let interval = 80;
-
     let intervalId = setInterval(() => {
         let tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
         let tempAge = Math.floor(Math.random() * (20 - 12) + 12);
@@ -241,6 +242,7 @@ function randomise(tempGender){
         if (iterations <= 0) {
             clearInterval(intervalId);
             backgroundClick(Math.floor(Math.random() * background.length), tempGender);
+            lock = false;
         }
     }, interval);
 }
@@ -265,11 +267,15 @@ function switchARoo(){
 }
 
 function previousDistrict() {
-    let newDistrict = (lastValue - 1 + 12) % 12;
-    districtChoice(newDistrict);
+    if (!lock){
+        let newDistrict = (lastValue - 1 + 12) % 12;
+        districtChoice(newDistrict);
+    }
 }
 
 function nextDistrict() {
-    let newDistrict = (lastValue + 1) % 12;
-    districtChoice(newDistrict);
+    if (!lock){
+        let newDistrict = (lastValue + 1) % 12;
+        districtChoice(newDistrict);
+    }
 }
