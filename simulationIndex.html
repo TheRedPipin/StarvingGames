@@ -16,11 +16,13 @@
     <script>
       let sections = ['A', 'B', 'C', 'D', 'E'];
       let numbers = [1, 2, 3, 4, 5];
-  
-      sections.forEach(row => {
-        numbers.forEach(num => {
+      let boxId = 0;
+      sections.forEach((row, rowIndex) => {
+        numbers.forEach((num, numIndex) => {
           let div = document.createElement('div');
           div.classList.add('sectionBox');
+          div.id = "section" + boxId.toString();
+          boxId += 1
           div.textContent = `${row}${num}`;
           document.getElementById('mapOuter').appendChild(div);
         });

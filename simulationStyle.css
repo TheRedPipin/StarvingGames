@@ -185,3 +185,12 @@ body {
 	display: block;
 	opacity: 1;
 }
+
+.redDot{
+  position: absolute;
+  border: red 2px solid;
+  background-color: red;
+  height: 5px;
+  width: 5px;
+  border-radius: 5px;
+}

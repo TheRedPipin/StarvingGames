@@ -237,6 +237,22 @@ window.onload = function() {
                 mapData[district[i].location[0]][district[i].location[1]] += 1
             }
         })
+        //Attempt at a red dot marker
+        /*
+        let boxId = 0;
+        mapData.forEach((element, rowIndex) => {
+            element.forEach((section, colIndex) => {
+                document.getElementById(`section${boxId}`).innerHTML = ""
+                for (let i = 0; i < section; i++){
+                    let dot = document.createElement("div")
+                    dot.classList.add("redDot")
+                    dot.id = `redDot${colIndex}${rowIndex}${i}`
+                    document.getElementById(`section${boxId}`).appendChild(dot)
+                }
+                boxId += 1
+            });
+        });
+        */
     }
 
     function contextBoxContent(person, action, details){
