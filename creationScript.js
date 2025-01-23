@@ -1,3 +1,4 @@
+let lock = false;
 const randomFirstNames = [
     "Alex", "Jordan", "Taylor", "Morgan", "Casey", "Riley", "Jamie", "Avery", "Peyton", "Quinn",
     "Skyler", "Ella", "Dakota", "Harper", "Rowan", "Sawyer", "Emerson", "Finley", "Hayden", "Parker",
@@ -122,12 +123,10 @@ for (let i = 0; i < 12; i++) {
 function backgroundClick(backgroundSelect, gender){
     //change the button color to green when clicked
     document.getElementById(`bkg${backgroundSelect}${gender}`).style.backgroundColor = "green";
-    document.getElementById(`bkg${backgroundSelect}${gender}`).style.color = "#FFF8DC";
     //reset all other buttons of the same gender to grey
     for (let i = 0; i < background.length; i++) {
         if (i !== backgroundSelect) {
             document.getElementById(`bkg${i}${gender}`).style.backgroundColor = "";
-            document.getElementById(`bkg${i}${gender}`).style.color = "";
         }
     }
     //sets the chosen contestants background to the selected
@@ -188,16 +187,14 @@ function districtChoice(districtNumber){
         button.style.border = "";
     });
     document.getElementById(`district${districtNumber}`).style.border = "2px dashed #FF4500"
-    document.getElementById(`district${districtNumber}`).style.borderRadius = "4px"
+    document.getElementById(`district${districtNumber}`).style.borderRadius = "2px"
     //drop down name change
     document.getElementById("dropButton").innerHTML = "District " + (districtNumber+1);
 
     //resets button colours
     for (let i = 0; i < background.length; i++) {
         document.getElementById(`bkg${i}${0}`).style.backgroundColor = "";
-        document.getElementById(`bkg${i}${0}`).style.color = "";
         document.getElementById(`bkg${i}${1}`).style.backgroundColor = "";
-        document.getElementById(`bkg${i}${1}`).style.color = "";
     }
     
     //saves male contestant data
@@ -213,7 +210,6 @@ function districtChoice(districtNumber){
     document.getElementById("tempAgeInputMale").value = contestants[districtNumber][0].age;
     if (contestants[districtNumber][0].background !== null) {
         document.getElementById(`bkg${contestants[districtNumber][0].background}0`).style.backgroundColor = "green";
-        document.getElementById(`bkg${contestants[districtNumber][0].background}0`).style.color = "#FFF8DC";
     }
     
     //loads new female values into the input fields
@@ -221,16 +217,15 @@ function districtChoice(districtNumber){
     document.getElementById("tempAgeInputFemale").value = contestants[districtNumber][1].age;
     if (contestants[districtNumber][1].background !== null) {
         document.getElementById(`bkg${contestants[districtNumber][1].background}1`).style.backgroundColor = "green";
-        document.getElementById(`bkg${contestants[districtNumber][1].background}0`).style.color = "#FFF8DC";
     }
     //reset 
     lastValue = districtNumber;
 }
 
 function randomise(tempGender){
+    lock = true;
     let iterations = 10;
     let interval = 80;
-
     let intervalId = setInterval(() => {
         let tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
         let tempAge = Math.floor(Math.random() * (20 - 12) + 12);
@@ -247,6 +242,7 @@ function randomise(tempGender){
         if (iterations <= 0) {
             clearInterval(intervalId);
             backgroundClick(Math.floor(Math.random() * background.length), tempGender);
+            lock = false;
         }
     }, interval);
 }
@@ -271,11 +267,15 @@ function switchARoo(){
 }
 
 function previousDistrict() {
-    let newDistrict = (lastValue - 1 + 12) % 12;
-    districtChoice(newDistrict);
+    if (!lock){
+        let newDistrict = (lastValue - 1 + 12) % 12;
+        districtChoice(newDistrict);
+    }
 }
 
 function nextDistrict() {
-    let newDistrict = (lastValue + 1) % 12;
-    districtChoice(newDistrict);
+    if (!lock){
+        let newDistrict = (lastValue + 1) % 12;
+        districtChoice(newDistrict);
+    }
 }
