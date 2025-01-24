@@ -250,13 +250,15 @@ window.onload = function() {
                 boxId += 1;
             }
         }
-
         if (mapUpdated) {
             boxId = 0;
+            const dots = document.querySelectorAll('.redDot');
+            dots.forEach(dot => {
+                dot.remove();
+            });
             mapData.forEach((element, rowIndex) => {
             element.forEach((section, colIndex) => {
                 const sectionBox = document.getElementById(`section${boxId}`);
-                sectionBox.innerHTML = "";
                 for (let i = 0; i < section; i++) {
                     let dot = document.createElement("div");
                     dot.classList.add("redDot");
