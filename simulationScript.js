@@ -238,21 +238,38 @@ window.onload = function() {
             }
         })
         //Attempt at a red dot marker
-        /*
         let boxId = 0;
-        mapData.forEach((element, rowIndex) => {
-            element.forEach((section, colIndex) => {
-                document.getElementById(`section${boxId}`).innerHTML = ""
-                for (let i = 0; i < section; i++){
-                    let dot = document.createElement("div")
-                    dot.classList.add("redDot")
-                    dot.id = `redDot${colIndex}${rowIndex}${i}`
-                    document.getElementById(`section${boxId}`).appendChild(dot)
+        let mapUpdated = false;
+        outerLoop:
+        for (let rowIndex = 0; rowIndex < mapData.length; rowIndex++) {
+            for (let colIndex = 0; colIndex < mapData[rowIndex].length; colIndex++) {
+                if (document.getElementById(`section${boxId}`).childElementCount !== mapData[rowIndex][colIndex]) {
+                    mapUpdated = true;
+                    break outerLoop;
                 }
-                boxId += 1
+                boxId += 1;
+            }
+        }
+
+        if (mapUpdated) {
+            boxId = 0;
+            mapData.forEach((element, rowIndex) => {
+            element.forEach((section, colIndex) => {
+                const sectionBox = document.getElementById(`section${boxId}`);
+                sectionBox.innerHTML = "";
+                for (let i = 0; i < section; i++) {
+                    let dot = document.createElement("div");
+                    dot.classList.add("redDot");
+                    dot.id = `redDot${colIndex}${rowIndex}${i}`;
+                    dot.style.position = "absolute";
+                    dot.style.top = `${Math.random() * 90}%`;
+                    dot.style.left = `${Math.random() * 90}%`;
+                    sectionBox.appendChild(dot);
+                }
+                boxId += 1;
             });
-        });
-        */
+            });
+        }
     }
 
     function contextBoxContent(person, action, details){
