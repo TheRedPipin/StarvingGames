@@ -169,9 +169,10 @@ window.onload = function() {
                 }
                 //movement logic
                 let movementRandom = Math.floor(Math.random()* 3);
-                let instinctRandom = Math.floor(Math.random() * 9);
-                if (instinctRandom > 3){ //60% chance of them moving
-                    if ((district[i].stats.strength < district[i].stats.intelligence) && (mapData[district[i].location[0]][district[i].location[1]] >= 2)){
+                let instinctRandom = Math.random();
+                let lightbulbMoment = Math.random();
+                if (instinctRandom > 0.3){ //60% chance of them moving
+                    if ((district[i].stats.strength < district[i].stats.intelligence) && (mapData[district[i].location[0]][district[i].location[1]] >= 2) || (lightbulbMoment > 0.8)){
                         mapData[district[i].location[0]][district[i].location[1]] -= 1;
                         while (true){
                             if (movementRandom == 0){
@@ -213,9 +214,11 @@ window.onload = function() {
                         }
                         mapData[district[i].location[0]][district[i].location[1]] += 1;
                         contextBoxContent(district[i], 0, `${letters[district[i].location[0]]}${district[i].location[1]+1}`);
-                    };
+                    }
+                else {
+                    contextBoxContent(district[i], 2, "Jesus")
+                }   
                 };
-            //other logic
             }
         })
     }, 10000);
@@ -275,7 +278,22 @@ window.onload = function() {
     }
 
     function contextBoxContent(person, action, details){
-        document.getElementById("contextBoxText").innerText += `${document.getElementById("dayText").innerText } ${document.getElementById("timeText").innerText } ${person.contestantName}, ${actionWords[action]} ${details}`;
-        document.getElementById("contextBoxText").innerHTML += "<br>"
+        let statusColors = ["red", "green"];
+        let nameTextColor = statusColors[person.status];
+        let actionTextColor = 0;
+        if (action == 0){
+            actionTextColor = "blue"
+        }
+        else if (action == 1){
+            actionTextColor = "yellow"
+        }
+        else if (action == 2){
+            actionTextColor = "red"
+        }
+        else if (action == 3){
+            actionTextColor = "yellow"
+        }
+        document.getElementById("contextBoxText").innerHTML += `${document.getElementById("dayText").innerText} ${document.getElementById("timeText").innerText} <span style="color:${nameTextColor};">${person.contestantName}</span> <span style="color:${colours[action]};">${actionWords[action]}</span> ${details}<br>`;
     }
 };
+//let actionWords = ["Moves", "Eat", "Fight", "Sleep"] let colours = ["blue", "yellow", "red", "yellow"]
