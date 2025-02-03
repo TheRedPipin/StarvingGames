@@ -229,6 +229,7 @@ function randomise(tempGender){
     let intervalId = setInterval(() => {
         let tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
         let tempAge = Math.floor(Math.random() * (20 - 12) + 12);
+        
 
         if (tempGender == 0){
             document.getElementById("tempNameInputMale").value = tempName;
@@ -263,7 +264,7 @@ function switchARoo(){
         }
     });
     localStorage.setItem("contestantData" , JSON.stringify(contestants)); //save data to local storage
-    window.location.href = "./simulationIndex.html";  //save data to local storage
+    window.location.href = "./simulationIndex.html";
 }
 
 function previousDistrict() {
@@ -277,5 +278,41 @@ function nextDistrict() {
     if (!lock){
         let newDistrict = (lastValue + 1) % 12;
         districtChoice(newDistrict);
+    }
+}
+
+function allRandom() {
+    if (!lock){
+        randomise(0);
+        randomise(1);
+        for (let i = 0; i < 12; i++) {
+            let tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
+            let tempAge = Math.floor(Math.random() * (20 - 12) + 12);
+            let randomBackground = Math.floor(Math.random() * background.length);
+            contestants[i][0].contestantName = tempName;
+            contestants[i][0].age = tempAge;
+            contestants[i][0].background = randomBackground;
+            const statBlock = ["strength", "intelligence", "speed", "constitution", "charisma"]
+            statBlock.reduce((stats, stat) => {
+                let statValue = background[0][stat] + Math.floor(Math.random() * background[0][stat]);
+                stats[stat] = Math.min(statValue, 10);
+                return stats;
+            }, {});
+            contestants[i][0].stats = statBlock;
+
+            tempName = randomFirstNames[Math.floor(Math.random() * randomFirstNames.length)] + " " + randomLastNames[Math.floor(Math.random() * randomLastNames.length)];
+            tempAge = Math.floor(Math.random() * (20 - 12) + 12);
+            randomBackground = Math.floor(Math.random() * background.length);
+            contestants[i][1].contestantName = tempName;
+            contestants[i][1].age = tempAge;
+            contestants[i][1].background = randomBackground;
+            statBlock.reduce((stats, stat) => {
+                let statValue = background[1][stat] + Math.floor(Math.random() * background[0][stat]);
+                stats[stat] = Math.min(statValue, 10);
+                return stats;
+            }, {});
+            contestants[i][1].stats = statBlock;
+        }
+        localStorage.setItem("contestantData" , JSON.stringify(contestants)); //save data to local storage
     }
 }

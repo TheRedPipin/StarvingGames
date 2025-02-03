@@ -167,6 +167,13 @@ window.onload = function() {
                 if (district[i].status == 0){
                     return
                 }
+                //environmental logic
+                let environmentalEvents = ["flood", "earthquake", "quicksand", "storms"];
+                let environmentalRandom = Math.random();
+                if (environmentalRandom > 0.8){
+                    let environmentalEvent = Math.floor(Math.random() * 4);
+                    contextBoxContent(district[i], 2, environmentalEvents[environmentalEvent])
+                }
                 //movement logic
                 let movementRandom = Math.floor(Math.random()* 3);
                 let instinctRandom = Math.random();
@@ -221,7 +228,7 @@ window.onload = function() {
                 };
             }
         })
-    }, 10000);
+    }, 1000);
 
     function updateMap(){
         mapData = []

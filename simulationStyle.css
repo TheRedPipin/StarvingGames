@@ -129,12 +129,12 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contextBoxText {
+#contextBoxText {
   position: absolute;
-  left: 2%;
-  top: 20%;
-  font-size: 19px;
-  color: #333;
+  top: 22%;
+  overflow-y: scroll;
+  max-height: 70%;
+  width: 90%;
 }
 
 .namesText, .ageText {
