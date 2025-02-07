@@ -1,10 +1,10 @@
 let seconds = 0;
 let minutes = 0;
-let hours = 0;
+let hours = 7;
 let days = 0;
 let aliveCount = 0;
 let mapData = []
-let actionWords = ["Moves", "Eat", "Fight", "Sleep"]
+let actionWords = ["Moves", "Eat", "Fight", "Sleep", "Environment"]
 let colours = ["blue", "yellow", "red", "yellow"]
 let letters = ["A","B","C","D","E"]
 window.onload = function() {
@@ -161,74 +161,83 @@ window.onload = function() {
         updateMap()
     }, 10);
 
-    setInterval(function humanLogicUpdate(){
+    let contextQueue = [];
+    let isProcessingQueue = false;
+
+    function processQueue() {
+        if (contextQueue.length > 0 && !isProcessingQueue) {
+            isProcessingQueue = true;
+            const { type, content } = contextQueue.shift();
+            if (type === "world") {
+                contextBoxContentWorld(content.location, content.event);
+            } else if (type === "person") {
+                contextBoxContentPerson(content.person, content.action, content.details);
+                if (content.action === 0) { // Moves
+                    mapData[content.person.location[0]][content.person.location[1]] -= 1;
+                    let movementRandom = Math.floor(Math.random() * 4);
+                    while (true) {
+                        if (movementRandom == 0 && content.person.location[0] > 0) {
+                            content.person.location[0] -= 1;
+                            break;
+                        } else if (movementRandom == 1 && content.person.location[0] < 4) {
+                            content.person.location[0] += 1;
+                            break;
+                        } else if (movementRandom == 2 && content.person.location[1] > 0) {
+                            content.person.location[1] -= 1;
+                            break;
+                        } else if (movementRandom == 3 && content.person.location[1] < 4) {
+                            content.person.location[1] += 1;
+                            break;
+                        } else {
+                            movementRandom = Math.floor(Math.random() * 4);
+                        }
+                    }
+                    mapData[content.person.location[0]][content.person.location[1]] += 1;
+                }
+            }
+            setTimeout(() => {
+                isProcessingQueue = false;
+                processQueue();
+            }, 1000);
+        }
+    }
+
+    function randomInterval(callback, min, max) {
+        const interval = Math.floor(Math.random() * (max - min + 1) + min);
+        setTimeout(() => {
+            callback();
+            randomInterval(callback, min, max);
+        }, interval);
+    }
+
+    randomInterval(function humanLogicUpdate() {
         contestants.forEach((district, index) => {
-            for (let i = 0;i<2;i++){
-                if (district[i].status == 0){
-                    return
+            for (let i = 0; i < 2; i++) {
+                if (district[i].status == 0) {
+                    return;
                 }
-                //environmental logic
-                let environmentalEvents = ["flood", "earthquake", "quicksand", "storms"];
+                // environmental logic
+                let environmentalEvents = ["Flood", "Earthquake", "Quicksand", "Storms"];
                 let environmentalRandom = Math.random();
-                if (environmentalRandom > 0.8){
-                    let environmentalEvent = Math.floor(Math.random() * 4);
-                    contextBoxContent(district[i], 2, environmentalEvents[environmentalEvent])
+                if (environmentalRandom > 0.8) {
+                    let location = [Math.floor(Math.random() * 5), Math.floor(Math.random() * 5)];
+                    let environmentalEvent = Math.floor(Math.random() * 3);
+                    contextQueue.push({ type: "world", content: { location, event: environmentalEvents[environmentalEvent] } });
                 }
-                //movement logic
-                let movementRandom = Math.floor(Math.random()* 3);
+                // movement logic
                 let instinctRandom = Math.random();
                 let lightbulbMoment = Math.random();
-                if (instinctRandom > 0.3){ //60% chance of them moving
-                    if ((district[i].stats.strength < district[i].stats.intelligence) && (mapData[district[i].location[0]][district[i].location[1]] >= 2) || (lightbulbMoment > 0.8)){
-                        mapData[district[i].location[0]][district[i].location[1]] -= 1;
-                        while (true){
-                            if (movementRandom == 0){
-                                try {
-                                    district[i].location[0] -= 1;
-                                    break
-                                }
-                                catch(e) {
-                                    continue
-                                }
-                            } 
-                            else if (movementRandom == 1){
-                                try {
-                                    district[i].location[0] += 1;
-                                    break
-                                }
-                                catch(e) {
-                                    continue
-                                }
-                            }
-                            else if (movementRandom == 2){
-                                try {
-                                    district[i].location[1] -= 1;
-                                    break
-                                }
-                                catch(e) {
-                                    continue
-                                }
-                            }
-                            else if (movementRandom == 3){
-                                try {
-                                    district[i].location[1] += 1;
-                                    break
-                                }
-                                catch(e) {
-                                    continue
-                                }
-                            }
-                        }
-                        mapData[district[i].location[0]][district[i].location[1]] += 1;
-                        contextBoxContent(district[i], 0, `${letters[district[i].location[0]]}${district[i].location[1]+1}`);
+                if (instinctRandom > 0.1) { // 10% chance of them moving
+                    if ((district[i].stats.strength < district[i].stats.intelligence) && (mapData[district[i].location[0]][district[i].location[1]] >= 2) || (lightbulbMoment > 0.8)) {
+                        contextQueue.push({ type: "person", content: { person: district[i], action: 0, details: `${letters[district[i].location[0]]}${district[i].location[1] + 1}` } });
+                    } else if (district[i].stats.strength > district[i].stats.intelligence) {
+                        contextQueue.push({ type: "person", content: { person: district[i], action: 2, details: "Jesus" } });
                     }
-                else {
-                    contextBoxContent(district[i], 2, "Jesus")
-                }   
-                };
+                }
             }
-        })
-    }, 1000);
+        });
+        processQueue();
+    }, 1000, 10000);
 
     function updateMap(){
         mapData = []
@@ -284,7 +293,18 @@ window.onload = function() {
         }
     }
 
-    function contextBoxContent(person, action, details){
+    function contextBoxContentWorld(location, type){
+        const contextBoxText = document.getElementById("contextBoxText");
+        const isScrolledToBottom = contextBoxText.scrollHeight - contextBoxText.clientHeight <= contextBoxText.scrollTop + 1;
+        contextBoxText.innerHTML += `${document.getElementById("dayText").innerText} ${document.getElementById("timeText").innerText} ${letters[location[0]]}${location[1]+1} ${type}<br>`;
+        if (isScrolledToBottom) {
+            contextBoxText.scrollTop = contextBoxText.scrollHeight - contextBoxText.clientHeight;
+        }
+    }
+
+    function contextBoxContentPerson(person, action, details){
+        const contextBoxText = document.getElementById("contextBoxText");
+        const isScrolledToBottom = contextBoxText.scrollHeight - contextBoxText.clientHeight <= contextBoxText.scrollTop + 1;
         let statusColors = ["red", "green"];
         let nameTextColor = statusColors[person.status];
         let actionTextColor = 0;
@@ -300,7 +320,10 @@ window.onload = function() {
         else if (action == 3){
             actionTextColor = "yellow"
         }
-        document.getElementById("contextBoxText").innerHTML += `${document.getElementById("dayText").innerText} ${document.getElementById("timeText").innerText} <span style="color:${nameTextColor};">${person.contestantName}</span> <span style="color:${colours[action]};">${actionWords[action]}</span> ${details}<br>`;
+        contextBoxText.innerHTML += `${document.getElementById("dayText").innerText} ${document.getElementById("timeText").innerText} <span style="color:${nameTextColor};">${person.contestantName}</span> <span style="color:${colours[action]};">${actionWords[action]}</span> ${details}<br>`;
+        if (isScrolledToBottom) {
+            contextBoxText.scrollTop = contextBoxText.scrollHeight - contextBoxText.clientHeight;
+        }
     }
 };
 //let actionWords = ["Moves", "Eat", "Fight", "Sleep"] let colours = ["blue", "yellow", "red", "yellow"]
