@@ -148,7 +148,7 @@ function backgroundClick(backgroundSelect, gender){
 
 //Class Innit
 class mother {
-    constructor({contestantName,age,gender,district,background,stats,status,location,inventory}) { 
+    constructor({contestantName, age, gender, district, background, stats, status, location, inventory, boxIndex}) { 
         this.contestantName = contestantName;
         this.age = age;
         this.gender = gender;
@@ -158,13 +158,15 @@ class mother {
         this.status = status;
         this.location = location;
         this.inventory = inventory;
+        this.boxIndex = boxIndex;
     }
 }
 
 //create an array of 12 districts, each with a male and female contestant
 for(let i = 0; i < 12; i++){
     contestants.push(
-        [new mother({contestantName:"", age:0, gender:"M", district:i, background:null, stats:{}, status:1, location:[2,2], inventory:[]}), new mother({contestantName:"", age:0, gender:"F", district:i, background:null, stats:{},status:1, location:[2,2], inventory:[]})]
+        [new mother({contestantName:"", age:0, gender:"M", district:i, background:null, stats:{}, status:1, location:[2,2], inventory:[], boxIndex: `name${i*2}`}), 
+         new mother({contestantName:"", age:0, gender:"F", district:i, background:null, stats:{}, status:1, location:[2,2], inventory:[], boxIndex: `name${i*2+1}`})]
     );
 }
 

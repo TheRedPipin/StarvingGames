@@ -3,11 +3,19 @@ let minutes = 0;
 let hours = 7;
 let days = 0;
 let aliveCount = 0;
-let mapData = []
-let actionWords = ["Moves", "Eat", "Fight", "Sleep", "Environment"]
+let mapPlayerPositions = []
+let mapEnviomentData = []
+let actionWords = ["Moves", "Eat", "Fights", "Sleep", "Environment"]
 let colours = ["blue", "yellow", "red", "yellow"]
 let letters = ["A","B","C","D","E"]
 window.onload = function() {
+    mapEnviomentData = []
+    for (let i = 0; i < 5; i++){
+        mapEnviomentData.push([])
+        for (let j = 0; j < 5; j++){
+            mapEnviomentData[i].push(0)
+        }
+    }
     //[boxIndex, district, gender]
     const districts = [
         { name: "District 1", numbers: [[0,0,0], [1,0,1]] },
@@ -170,10 +178,35 @@ window.onload = function() {
             const { type, content } = contextQueue.shift();
             if (type === "world") {
                 contextBoxContentWorld(content.location, content.event);
+                mapEnviomentData[content.location[0]][content.location[1]] = content.eventIndex;
+                contestants.forEach((district) => {
+                    district.forEach((contestant) => {
+                        if (contestant.status === 1 && contestant.location[0] === content.location[0] && contestant.location[1] === content.location[1]) {
+                            contestant.status = 0;
+                            aliveCount -= 1;
+                            mapPlayerPositions[contestant.location[0]][contestant.location[1]] -= 1;
+                            console.log(contestant);
+                            document.getElementById(contestant.boxIndex).parentElement.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+                            const tempDiv = document.createElement("div");
+                            tempDiv.innerHTML = "X";
+                            tempDiv.style.color = "red";
+                            tempDiv.style.fontSize = "40px";
+                            tempDiv.style.textAlign = "center";
+                            tempDiv.style.justifyContent = "center";
+                            document.getElementById(contestant.boxIndex).parentElement.appendChild(tempDiv);
+                        }
+                    });
+                });
+                contextQueue = contextQueue.filter(item => {
+                    if (item.type === "person") {
+                        return item.content.person.status !== 0;
+                    }
+                    return true;
+                });
             } else if (type === "person") {
                 contextBoxContentPerson(content.person, content.action, content.details);
                 if (content.action === 0) { // Moves
-                    mapData[content.person.location[0]][content.person.location[1]] -= 1;
+                    mapPlayerPositions[content.person.location[0]][content.person.location[1]] -= 1;
                     let movementRandom = Math.floor(Math.random() * 4);
                     while (true) {
                         if (movementRandom == 0 && content.person.location[0] > 0) {
@@ -192,7 +225,7 @@ window.onload = function() {
                             movementRandom = Math.floor(Math.random() * 4);
                         }
                     }
-                    mapData[content.person.location[0]][content.person.location[1]] += 1;
+                    mapPlayerPositions[content.person.location[0]][content.person.location[1]] += 1;
                 }
             }
             setTimeout(() => {
@@ -219,16 +252,16 @@ window.onload = function() {
                 // environmental logic
                 let environmentalEvents = ["Flood", "Earthquake", "Quicksand", "Storms"];
                 let environmentalRandom = Math.random();
-                if (environmentalRandom > 0.8) {
-                    let location = [Math.floor(Math.random() * 5), Math.floor(Math.random() * 5)];
+                if (environmentalRandom > 0.95) {
+                    let location = [Math.floor(Math.random() * 4), Math.floor(Math.random() * 4)];
                     let environmentalEvent = Math.floor(Math.random() * 3);
-                    contextQueue.push({ type: "world", content: { location, event: environmentalEvents[environmentalEvent] } });
+                    contextQueue.push({ type: "world", content: { location, event: environmentalEvents[environmentalEvent], eventIndex: environmentalEvent } });
                 }
                 // movement logic
                 let instinctRandom = Math.random();
                 let lightbulbMoment = Math.random();
                 if (instinctRandom > 0.1) { // 10% chance of them moving
-                    if ((district[i].stats.strength < district[i].stats.intelligence) && (mapData[district[i].location[0]][district[i].location[1]] >= 2) || (lightbulbMoment > 0.8)) {
+                    if ((district[i].stats.strength < district[i].stats.intelligence) && (mapPlayerPositions[district[i].location[0]][district[i].location[1]] >= 2) || (lightbulbMoment > 0.8)) {
                         contextQueue.push({ type: "person", content: { person: district[i], action: 0, details: `${letters[district[i].location[0]]}${district[i].location[1] + 1}` } });
                     } else if (district[i].stats.strength > district[i].stats.intelligence) {
                         contextQueue.push({ type: "person", content: { person: district[i], action: 2, details: "Jesus" } });
@@ -240,11 +273,11 @@ window.onload = function() {
     }, 1000, 10000);
 
     function updateMap(){
-        mapData = []
+        mapPlayerPositions = []
         for (let i = 0; i < 5; i++){
-            mapData.push([])
+            mapPlayerPositions.push([])
             for (let j = 0; j < 5; j++){
-                mapData[i].push(0)
+                mapPlayerPositions[i].push(0)
             }
         }
         contestants.forEach((district) => {
@@ -253,16 +286,16 @@ window.onload = function() {
                     return
                 }
                 //in [male, female (location 0 = male and location 1 = female)]
-                mapData[district[i].location[0]][district[i].location[1]] += 1
+                mapPlayerPositions[district[i].location[0]][district[i].location[1]] += 1
             }
         })
         //Attempt at a red dot marker
         let boxId = 0;
         let mapUpdated = false;
         outerLoop:
-        for (let rowIndex = 0; rowIndex < mapData.length; rowIndex++) {
-            for (let colIndex = 0; colIndex < mapData[rowIndex].length; colIndex++) {
-                if (document.getElementById(`section${boxId}`).childElementCount !== mapData[rowIndex][colIndex]) {
+        for (let rowIndex = 0; rowIndex < mapPlayerPositions.length; rowIndex++) {
+            for (let colIndex = 0; colIndex < mapPlayerPositions[rowIndex].length; colIndex++) {
+                if (document.getElementById(`section${boxId}`).childElementCount !== mapPlayerPositions[rowIndex][colIndex]) {
                     mapUpdated = true;
                     break outerLoop;
                 }
@@ -275,7 +308,7 @@ window.onload = function() {
             dots.forEach(dot => {
                 dot.remove();
             });
-            mapData.forEach((element, rowIndex) => {
+            mapPlayerPositions.forEach((element, rowIndex) => {
             element.forEach((section, colIndex) => {
                 const sectionBox = document.getElementById(`section${boxId}`);
                 for (let i = 0; i < section; i++) {
